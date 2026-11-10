@@ -1,0 +1,479 @@
+/* ==========================================================================
+   SUPEREDUC | SUPERINTENDENCIA DE EDUCACIÓN — DESIGN TOKENS + COMPONENTES UI
+   Documento madre: index.html (Brand Kit TI)
+   Base normativa: https://framework.digital.gob.cl/  (Kit Digital de Gobierno)
+   Estándar institucional Supereduc, alineado con el Framework de Gobierno Digital.
+
+   JERARQUÍA DE PREPONDERANCIA (en caso de conflicto prevalece el nivel superior)
+     N1  Framework Digital Gob.cl  -> accesibilidad, ClaveÚnica, estructura, tricolor
+     N2  Sistema de Diseño Supereduc -> tokens de UI (acción, estados, tipografía, efectos)
+     N3  Identidad Supereduc       -> marca (azul/rojo institucional, logos, banners)
+     N4  Implementación de proyecto-> sólo EXTIENDE tokens, nunca los sobrescribe
+
+   NOMENCLATURA:  --se-{categoría}-{rol|escala}-{variante}
+     Primitivos  : valores crudos (no usar directo en componentes)
+     Semánticos  : rol de uso (usar SIEMPRE en componentes) -> cambian por tema
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. PRIMITIVOS — PALETA BASE (estándar Supereduc / Kit Digital de Gobierno)
+     Escala: 50 (lighten máx) ... 500 (BASE) ... 900 (darken máx)
+     ------------------------------------------------------------------------ */
+  --se-primary-50:  #BFEEFF;
+  --se-primary-200: #649CFD;
+  --se-primary-500: #0F69C4; /* BASE acción (Kit Gob) */
+  --se-primary-700: #003B8D;
+  --se-primary-900: #00135A;
+
+  --se-accent-50:  #FFCFD3;
+  --se-accent-200: #F37874;
+  --se-accent-500: #FF4731;  /* BASE accent */
+  --se-accent-700: #E4332C;
+  --se-accent-900: #C82018;
+
+  --se-gray-10: #E6E6E6;
+  --se-gray-20: #CCCCCC;
+  --se-gray-60: #666666;    /* BASE gris */
+  --se-gray-90: #1C1C1C;
+  --se-white:   #FFFFFF;
+  --se-black:   #111111;
+  --se-black-text: #373737;
+
+  /* Estados (semánticos base) — Lighten / Base / Darken */
+  --se-success-50: #C8E6C9;  --se-success-500: #4CAF50;  --se-success-900: #1B5E20;
+  --se-info-50:    #BBDEFB;  --se-info-500:    #2196F3;  --se-info-900:    #0D47A1;
+  --se-warning-50: #FFCCBC;  --se-warning-500: #FF5722;  --se-warning-900: #BF360C;
+  --se-error-50:   #FFCDD2;  --se-error-500:   #FB3B3B;  --se-error-900:   #BE0A1F;
+  --se-focus-500:  #FFBE5C;  --se-focus-contrast: #373737;
+  --se-link-500:   #1D70B8;  --se-link-visited: #4C2C92;
+
+  /* ------------------------------------------------------------------------
+     2. PALETA INSTITUCIONAL OFICIAL (N3)
+     Azul oscuro, azul claro, blanco grisáceo y rojo según guía institucional.
+     ------------------------------------------------------------------------ */
+  --se-brand-azul-oscuro: #25306B;
+  --se-brand-azul-claro: #006BB9;
+  --se-brand-blanco-grisaceo: #EDF0F5;
+  --se-brand-rojo: #FF1D3D;
+  --se-brand-azul-50: var(--se-brand-blanco-grisaceo);
+  --se-brand-azul-500: var(--se-brand-azul-oscuro);
+  --se-brand-rojo-500: var(--se-brand-rojo);
+
+  /* Gradientes institucionales oficiales */
+  --se-gradient-brand-deep: linear-gradient(135deg, var(--se-brand-azul-oscuro) 0%, #2C3D9E 100%);
+  --se-gradient-brand-blue: linear-gradient(135deg, var(--se-brand-azul-oscuro) 0%, var(--se-brand-azul-claro) 100%);
+  --se-gradient-brand-red-neutral: linear-gradient(135deg, var(--se-brand-rojo) 0%, var(--se-brand-blanco-grisaceo) 100%);
+
+  /* ClaveÚnica (N1 — no modificar) */
+  --se-cu-bg: #0F69C4;
+  --se-cu-bg-hover: #0B457F;
+  --se-cu-bg-disabled: #A8BEDD;
+
+  /* ------------------------------------------------------------------------
+     3. SEMÁNTICOS — LIGHT THEME (por defecto)
+     ------------------------------------------------------------------------ */
+  --se-color-bg: var(--se-white);
+  --se-color-surface: var(--se-brand-blanco-grisaceo);
+  --se-color-text: var(--se-black-text);
+  --se-color-text-muted: var(--se-gray-60);
+  --se-color-text-inverse: var(--se-white);
+  --se-color-border: var(--se-gray-20);
+  --se-color-border-strong: var(--se-gray-60);
+
+  --se-color-action: var(--se-primary-500);
+  --se-color-action-variant: var(--se-primary-700);
+  --se-color-action-hover: var(--se-primary-700);
+  --se-color-action-active: var(--se-primary-900);
+  --se-color-action-hover-text: var(--se-primary-700); /* texto/borde en hover */
+  --se-color-action-subtle: #E7F0FA;          /* fondo hover secundario/terciario */
+  --se-color-accent: var(--se-accent-500);
+  --se-color-accent-variant: var(--se-accent-200);
+
+  --se-color-brand: var(--se-brand-azul-500);
+  --se-color-brand-strong: var(--se-brand-azul-oscuro);
+  --se-color-brand-accent: var(--se-brand-rojo);
+
+  --se-color-success: var(--se-success-500);
+  --se-color-success-text: var(--se-success-900);
+  --se-color-success-bg: var(--se-success-50);
+  --se-color-info: var(--se-info-500);
+  --se-color-info-text: var(--se-info-900);
+  --se-color-info-bg: var(--se-info-50);
+  --se-color-warning: var(--se-warning-500);
+  --se-color-warning-text: var(--se-warning-900);
+  --se-color-warning-bg: var(--se-warning-50);
+  --se-color-error: var(--se-error-500);
+  --se-color-error-text: var(--se-error-900);
+  --se-color-error-bg: var(--se-error-50);
+
+  --se-color-focus: var(--se-focus-500);
+  --se-color-link: var(--se-link-500);
+  --se-color-link-hover: var(--se-primary-700);
+  --se-color-link-visited: var(--se-link-visited);
+
+  --se-color-disabled-bg: var(--se-gray-10);
+  --se-color-disabled-text: var(--se-gray-60);
+  --se-color-disabled-border: var(--se-gray-20);
+
+  /* ------------------------------------------------------------------------
+     4. TIPOGRAFÍA — Roboto, base 16px, line-height 1.5 (estándar institucional)
+     Desktop por defecto; Mobile en media query (<= 768px)
+     ------------------------------------------------------------------------ */
+  --se-font-family: "Roboto", "Roboto Sans", Arial, sans-serif;
+  --se-font-mono: "Fira Code", Consolas, monospace;
+  --se-line-height: 1.5;
+  --se-font-weight-regular: 400;
+  --se-font-weight-medium: 500;
+  --se-font-weight-bold: 700;
+
+  --se-fs-heading-xl: 3rem;       /* 48px Bold 700 */
+  --se-fs-heading-l: 2.25rem;     /* 36px H1 */
+  --se-fs-heading-m: 2rem;        /* 32px H2 */
+  --se-fs-heading-s: 1.1875rem;   /* 19px H3 */
+  --se-fs-heading-xs: 1rem;       /* 16px H4 */
+  --se-fs-body-s: 1rem;           /* 16px Cuerpo */
+  --se-fs-body-xs: 0.875rem;      /* 14px */
+  --se-fs-button: 1rem;           /* 16px */
+  --se-fs-button-small: 0.875rem; /* 14px */
+  --se-fs-link: 1rem;             /* 16px */
+
+  /* ------------------------------------------------------------------------
+     5. EFECTOS — Elevación, bordes, radios (estándar institucional)
+     ------------------------------------------------------------------------ */
+  --se-elevation-0: none;
+  --se-elevation-01: 0 1px 3px rgba(0, 0, 0, 0.16);
+  --se-elevation-02: 0 3px 8px rgba(0, 0, 0, 0.18);
+  --se-elevation-03: 0 8px 20px rgba(0, 0, 0, 0.22);
+
+  --se-border-1: 1px;
+  --se-border-2: 2px;
+  --se-border-3: 3px;
+
+  --se-radius-0: 0;
+  --se-radius-4: 4px;
+  --se-radius-8: 8px;
+  --se-radius-16: 16px;
+  --se-radius-pill: 999px;
+
+  /* Espaciado (múltiplos de 4) */
+  --se-space-1: 4px;
+  --se-space-2: 8px;
+  --se-space-3: 12px;
+  --se-space-4: 16px;
+  --se-space-5: 24px;
+  --se-space-6: 32px;
+  --se-space-7: 48px;
+  --se-space-8: 64px;
+
+  /* Movimiento (micro-interacciones hover / roll-over) */
+  --se-duration-fast: 120ms;
+  --se-duration-base: 200ms;
+  --se-duration-slow: 320ms;
+  --se-easing: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Foco accesible (WCAG 2.4.7 / 2.4.11) */
+  --se-focus-ring: 0 0 0 3px var(--se-color-focus);
+  --se-focus-ring-offset: 0 0 0 2px var(--se-color-bg), 0 0 0 5px var(--se-color-focus);
+
+  /* Layout */
+  --se-sidenav-w: 280px;
+  --se-sidenav-w-collapsed: 72px;
+  --se-z-sidenav: 900;
+  --se-z-modal: 1000;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --se-fs-heading-xl: 2rem;      /* 32px */
+    --se-fs-heading-l: 1.5rem;     /* 24px */
+    --se-fs-heading-m: 1.125rem;   /* 18px */
+    --se-fs-heading-s: 1rem;       /* 16px */
+    --se-fs-heading-xs: 0.875rem;  /* 14px */
+    --se-fs-body-s: 0.875rem;      /* 14px */
+    --se-fs-body-xs: 0.75rem;      /* 12px */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. TEMAS — Dark y Alto Contraste (estándar institucional)
+   Uso: <html data-theme="dark"> | <html data-theme="hc">  (o en un contenedor)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  --se-color-bg: #373737;
+  --se-color-surface: #2B2B2B;
+  --se-color-text: #FFFFFF;
+  --se-color-text-muted: #CCCCCC;
+  --se-color-border: #666666;
+  --se-color-border-strong: #CCCCCC;
+  --se-color-action: #0F69C4;
+  --se-color-action-variant: #649CFD;
+  --se-color-action-hover: #003B8D;
+  --se-color-action-active: #00135A;
+  --se-color-action-hover-text: #649CFD;
+  --se-color-action-subtle: rgba(100, 156, 253, 0.16);
+  --se-color-accent: #FF4731;
+  --se-color-accent-variant: #FFECEF;
+  --se-color-success: #4CAF50;
+  --se-color-error: #FB3B3B;
+  --se-color-focus: #FFBE5C;
+  --se-color-link: #649CFD;
+  --se-color-link-hover: #BFEEFF;
+  --se-color-link-visited: #B9A6E8;
+  --se-color-disabled-bg: #4A4A4A;
+  --se-color-disabled-text: #9A9A9A;
+  --se-color-disabled-border: #5A5A5A;
+  --se-color-brand: #ADB8CA;
+  color-scheme: dark;
+}
+
+[data-theme="hc"] {
+  --se-color-bg: #000000;
+  --se-color-surface: #000000;
+  --se-color-text: #FFFFFF;
+  --se-color-text-muted: #FFFFFF;
+  --se-color-border: #FFFFFF;
+  --se-color-border-strong: #FFFFFF;
+  --se-color-action: #0F69C4;
+  --se-color-action-variant: #649CFD;
+  --se-color-action-hover: #649CFD;
+  --se-color-action-active: #FFFF00;
+  --se-color-action-hover-text: #00FFFF;
+  --se-color-action-subtle: rgba(255, 255, 0, 0.18);
+  --se-color-accent: #FFFF00;
+  --se-color-accent-variant: #00FFFF;
+  --se-color-success: #00FFFF;
+  --se-color-error: #FFFF00;
+  --se-color-focus: #FFFFFF;
+  --se-color-link: #FFFF00;
+  --se-color-link-hover: #00FFFF;
+  --se-color-link-visited: #00FFFF;
+  --se-color-disabled-bg: #000000;
+  --se-color-disabled-text: #8A8A8A;
+  --se-color-disabled-border: #8A8A8A;
+  --se-color-brand: #FFFFFF;
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --se-duration-fast: 0ms; --se-duration-base: 0ms; --se-duration-slow: 0ms; }
+}
+
+/* ==========================================================================
+   7. COMPONENTES CON ESTADOS (default · hover/roll-over · focus · active · disabled)
+   ========================================================================== */
+
+/* ---- 7.1 BOTONES ---- */
+.se-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--se-space-2);
+  min-height: 44px;                       /* área táctil mínima */
+  padding: 10px 20px;
+  font-family: var(--se-font-family);
+  font-size: var(--se-fs-button);
+  font-weight: var(--se-font-weight-bold);
+  line-height: var(--se-line-height);
+  border: var(--se-border-2) solid transparent;
+  border-radius: var(--se-radius-4);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--se-duration-base) var(--se-easing),
+              color var(--se-duration-base) var(--se-easing),
+              border-color var(--se-duration-base) var(--se-easing),
+              box-shadow var(--se-duration-fast) var(--se-easing);
+}
+.se-btn:focus-visible { outline: none; box-shadow: var(--se-focus-ring); }
+.se-btn:disabled,
+.se-btn[aria-disabled="true"] {
+  background: var(--se-color-disabled-bg) !important;
+  color: var(--se-color-disabled-text) !important;
+  border-color: var(--se-color-disabled-border) !important;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Primario: 1 por vista/flujo (acción principal) */
+.se-btn--primary { background: var(--se-color-action); color: var(--se-color-text-inverse); }
+.se-btn--primary:hover, .se-btn--primary.is-hover { background: var(--se-color-action-hover); }
+.se-btn--primary:active, .se-btn--primary.is-active { background: var(--se-primary-900); transform: translateY(1px); }
+.se-btn--primary.is-focus { box-shadow: var(--se-focus-ring); }
+
+/* Secundario: acciones alternativas (Cancelar, Copiar, Agregar) */
+.se-btn--secondary { background: transparent; color: var(--se-color-action); border-color: var(--se-color-action); }
+.se-btn--secondary:hover, .se-btn--secondary.is-hover { background: var(--se-color-action-subtle); color: var(--se-color-action-hover-text); border-color: var(--se-color-action-hover-text); }
+.se-btn--secondary:active, .se-btn--secondary.is-active { background: var(--se-color-action-hover); color: var(--se-color-text-inverse); }
+.se-btn--secondary.is-focus { box-shadow: var(--se-focus-ring); }
+
+/* Terciario: navegación de bajo peso (Siguiente, Ver más) */
+.se-btn--tertiary { background: transparent; color: var(--se-color-action); padding-inline: 8px; }
+.se-btn--tertiary:hover, .se-btn--tertiary.is-hover { color: var(--se-color-action-hover-text); text-decoration: underline; text-underline-offset: 4px; }
+.se-btn--tertiary:active { color: var(--se-color-action-active); }
+
+/* Botón icono: requiere aria-label */
+.se-btn--icon { width: 44px; padding: 0; background: transparent; color: var(--se-color-action); }
+.se-btn--icon:hover, .se-btn--icon.is-hover { background: var(--se-color-action-subtle); }
+.se-btn--icon-secondary { border-color: var(--se-color-action); }
+
+/* Tamaños */
+.se-btn--sm { min-height: 36px; padding: 6px 14px; font-size: var(--se-fs-button-small); }
+.se-btn--lg { min-height: 52px; padding: 12px 28px; font-size: 1.125rem; }
+.se-btn--block { width: 100%; }
+
+/* ---- 7.2 BOTÓN CLAVEÚNICA (N1 – Kit Gob) ---- */
+.se-btn-cu {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 48px; padding: 10px 22px;
+  background: var(--se-cu-bg); color: #fff;
+  font-family: var(--se-font-family); font-size: 1rem; font-weight: 700;
+  border: 0; border-radius: var(--se-radius-0); cursor: pointer;
+  transition: background-color var(--se-duration-base) var(--se-easing), box-shadow var(--se-duration-fast);
+}
+.se-btn-cu--r4 { border-radius: var(--se-radius-4); }
+.se-btn-cu--sm { min-height: 38px; padding: 6px 14px; font-size: 0.875rem; }
+.se-btn-cu:hover, .se-btn-cu.is-hover { background: var(--se-cu-bg-hover); }
+.se-btn-cu:focus-visible, .se-btn-cu.is-focus { outline: none; box-shadow: 0 0 0 4px var(--se-focus-500); }
+.se-btn-cu:disabled { background: var(--se-cu-bg-disabled); color: rgba(255,255,255,.75); cursor: not-allowed; }
+.se-btn-cu .se-cu-icon { width: 22px; height: 22px; border: 2px solid currentColor; border-radius: 50%; display: inline-block; position: relative; }
+.se-btn-cu .se-cu-icon::after { content: ""; position: absolute; inset: 5px; border: 2px solid currentColor; border-radius: 50%; }
+
+/* ---- 7.3 ENLACES ---- */
+.se-link {
+  color: var(--se-color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-size: var(--se-fs-link);
+  transition: color var(--se-duration-fast) var(--se-easing), text-decoration-thickness var(--se-duration-fast);
+}
+.se-link:visited { color: var(--se-color-link-visited); }
+.se-link:hover, .se-link.is-hover { color: var(--se-color-link-hover); text-decoration-thickness: 3px; }
+.se-link:focus-visible, .se-link.is-focus { outline: none; background: var(--se-focus-500); color: var(--se-focus-contrast); box-shadow: 0 -2px var(--se-focus-500), 0 4px var(--se-focus-contrast); text-decoration: none; }
+.se-link:active { color: var(--se-color-action-active); }
+.se-link--lg { font-size: 1.25rem; font-weight: 700; }
+.se-link--bold { font-weight: 700; }
+
+/* ---- 7.4 CAMPOS DE FORMULARIO ---- */
+.se-input {
+  width: 100%; min-height: 44px; padding: 10px 12px;
+  font: inherit; color: var(--se-color-text); background: var(--se-color-bg);
+  border: var(--se-border-2) solid var(--se-color-border-strong);
+  border-radius: var(--se-radius-4);
+  transition: border-color var(--se-duration-fast), box-shadow var(--se-duration-fast);
+  box-sizing: border-box;
+}
+.se-input:hover, .se-input.is-hover { border-color: var(--se-color-action); }
+.se-input:focus, .se-input.is-focus { outline: none; border-color: var(--se-color-action); box-shadow: var(--se-focus-ring); }
+.se-input[aria-invalid="true"], .se-input.is-error { border-color: var(--se-color-error-text); }
+.se-input:disabled { background: var(--se-color-disabled-bg); color: var(--se-color-disabled-text); border-color: var(--se-color-disabled-border); cursor: not-allowed; }
+
+/* ---- 7.5 TARJETAS ---- */
+.se-card {
+  background: var(--se-color-bg); color: var(--se-color-text);
+  border: var(--se-border-1) solid var(--se-color-border);
+  border-radius: var(--se-radius-8);
+  box-shadow: var(--se-elevation-01);
+  padding: var(--se-space-5);
+  transition: box-shadow var(--se-duration-base) var(--se-easing), transform var(--se-duration-base) var(--se-easing), border-color var(--se-duration-base);
+}
+.se-card--interactive { cursor: pointer; position: relative; }
+.se-card--interactive:hover, .se-card--interactive.is-hover { box-shadow: var(--se-elevation-03); transform: translateY(-2px); border-color: var(--se-color-action); }
+.se-card--interactive:focus-within { box-shadow: var(--se-elevation-02), var(--se-focus-ring); }
+.se-card--interactive:active { transform: translateY(0); box-shadow: var(--se-elevation-01); }
+
+/* ---- 7.6 MENÚ LATERAL (SIDENAV) ---- */
+.se-sidenav {
+  width: var(--se-sidenav-w);
+  background: var(--se-color-bg);
+  border-right: var(--se-border-1) solid var(--se-color-border);
+  font-family: var(--se-font-family);
+  display: flex; flex-direction: column;
+  transition: width var(--se-duration-slow) var(--se-easing);
+  box-sizing: border-box;
+}
+.se-sidenav__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 16px; border-bottom: 3px solid var(--se-color-action); }
+.se-sidenav__title { font-weight: 700; color: var(--se-color-brand); font-size: 0.95rem; white-space: nowrap; overflow: hidden; }
+.se-sidenav__group-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--se-color-text-muted); padding: 16px 16px 6px; }
+.se-sidenav__list { list-style: none; margin: 0; padding: 0 8px; }
+.se-sidenav__link, .se-sidenav__toggle {
+  width: 100%; display: flex; align-items: center; gap: 12px;
+  min-height: 44px; padding: 8px 12px; box-sizing: border-box;
+  color: var(--se-color-text); background: transparent;
+  border: 0; border-left: 4px solid transparent; border-radius: var(--se-radius-4);
+  font: inherit; font-size: 0.95rem; text-align: left; text-decoration: none; cursor: pointer;
+  transition: background-color var(--se-duration-fast) var(--se-easing), color var(--se-duration-fast), border-color var(--se-duration-fast);
+}
+.se-sidenav__link i, .se-sidenav__toggle i { font-size: 1.1rem; color: var(--se-color-text-muted); transition: color var(--se-duration-fast); flex-shrink: 0; }
+.se-sidenav__link:hover, .se-sidenav__toggle:hover, .se-sidenav__link.is-hover { background: var(--se-color-action-subtle); color: var(--se-color-action-hover-text); }
+.se-sidenav__link:hover i, .se-sidenav__toggle:hover i { color: var(--se-color-action-hover-text); }
+.se-sidenav__link:focus-visible, .se-sidenav__toggle:focus-visible { outline: none; box-shadow: inset 0 0 0 3px var(--se-color-focus); }
+.se-sidenav__link[aria-current="page"] { background: var(--se-brand-azul-50); color: var(--se-color-brand); font-weight: 700; border-left-color: var(--se-color-action); }
+.se-sidenav__link[aria-current="page"] i { color: var(--se-color-brand); }
+.se-sidenav__link[aria-disabled="true"] { color: var(--se-color-disabled-text); pointer-events: none; }
+.se-sidenav__chevron { margin-left: auto; transition: transform var(--se-duration-base) var(--se-easing); }
+.se-sidenav__toggle[aria-expanded="true"] .se-sidenav__chevron { transform: rotate(180deg); }
+.se-sidenav__sub { list-style: none; margin: 2px 0 6px; padding: 0 0 0 28px; display: none; }
+.se-sidenav__toggle[aria-expanded="true"] + .se-sidenav__sub { display: block; }
+.se-sidenav__sub .se-sidenav__link { min-height: 38px; font-size: 0.88rem; }
+.se-sidenav__badge { margin-left: auto; background: var(--se-color-brand-accent); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: var(--se-radius-pill); }
+.se-sidenav__foot { margin-top: auto; padding: 12px 8px; border-top: 1px solid var(--se-color-border); }
+/* Colapsado (sólo iconos) */
+.se-sidenav.is-collapsed { width: var(--se-sidenav-w-collapsed); }
+.se-sidenav.is-collapsed .se-sidenav__label,
+.se-sidenav.is-collapsed .se-sidenav__title,
+.se-sidenav.is-collapsed .se-sidenav__group-label,
+.se-sidenav.is-collapsed .se-sidenav__chevron,
+.se-sidenav.is-collapsed .se-sidenav__badge,
+.se-sidenav.is-collapsed .se-sidenav__sub { display: none !important; }
+.se-sidenav.is-collapsed .se-sidenav__link, .se-sidenav.is-collapsed .se-sidenav__toggle { justify-content: center; padding-inline: 0; }
+/* Móvil: off-canvas */
+.se-sidenav-overlay { display: none; }
+@media (max-width: 768px) {
+  .se-sidenav--offcanvas { position: fixed; inset: 0 auto 0 0; z-index: var(--se-z-sidenav); transform: translateX(-100%); transition: transform var(--se-duration-slow) var(--se-easing); box-shadow: var(--se-elevation-03); }
+  .se-sidenav--offcanvas.is-open { transform: translateX(0); }
+  .se-sidenav-overlay.is-open { display: block; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: calc(var(--se-z-sidenav) - 1); }
+}
+
+/* ---- 7.7 PESTAÑAS ---- */
+.se-tabs__list { display: flex; gap: 4px; border-bottom: 2px solid var(--se-color-border); }
+.se-tabs__tab {
+  padding: 10px 18px; min-height: 44px; background: transparent; border: 0; border-bottom: 3px solid transparent; margin-bottom: -2px;
+  font: inherit; font-weight: 500; color: var(--se-color-text-muted); cursor: pointer;
+  transition: color var(--se-duration-fast), border-color var(--se-duration-fast), background-color var(--se-duration-fast);
+}
+.se-tabs__tab:hover { color: var(--se-color-action-hover-text); background: var(--se-color-action-subtle); }
+.se-tabs__tab:focus-visible { outline: none; box-shadow: inset 0 0 0 3px var(--se-color-focus); }
+.se-tabs__tab[aria-selected="true"] { color: var(--se-color-action); border-bottom-color: var(--se-color-action); font-weight: 700; }
+.se-tabs__panel { padding: 18px 4px; }
+
+/* ---- 7.8 ACORDEÓN ---- */
+.se-accordion { border: 1px solid var(--se-color-border); border-radius: var(--se-radius-8); overflow: hidden; }
+.se-accordion__item + .se-accordion__item { border-top: 1px solid var(--se-color-border); }
+.se-accordion__btn {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 14px 18px; background: var(--se-color-bg); border: 0; font: inherit; font-weight: 700; color: var(--se-color-text); text-align: left; cursor: pointer;
+  transition: background-color var(--se-duration-fast), color var(--se-duration-fast);
+}
+.se-accordion__btn:hover { background: var(--se-color-action-subtle); color: var(--se-color-action-hover-text); }
+.se-accordion__btn:focus-visible { outline: none; box-shadow: inset 0 0 0 3px var(--se-color-focus); }
+.se-accordion__btn i { transition: transform var(--se-duration-base) var(--se-easing); }
+.se-accordion__btn[aria-expanded="true"] i { transform: rotate(180deg); }
+.se-accordion__panel { padding: 0 18px 16px; color: var(--se-color-text); }
+.se-accordion__panel[hidden] { display: none; }
+
+/* ---- 7.9 MODAL ---- */
+.se-modal-backdrop { position: fixed; inset: 0; background: rgba(10, 22, 41, 0.6); display: none; align-items: center; justify-content: center; padding: 20px; z-index: var(--se-z-modal); }
+.se-modal-backdrop.is-open { display: flex; animation: se-fade var(--se-duration-base) var(--se-easing); }
+.se-modal { background: var(--se-color-bg); color: var(--se-color-text); border-radius: var(--se-radius-8); box-shadow: var(--se-elevation-03); width: 100%; max-width: 520px; border-top: 4px solid var(--se-color-brand-accent); }
+.se-modal__head { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px 8px; }
+.se-modal__title { margin: 0; font-size: 1.25rem; color: var(--se-color-brand); }
+.se-modal__body { padding: 8px 22px 18px; line-height: 1.5; }
+.se-modal__foot { display: flex; justify-content: flex-end; gap: 10px; padding: 14px 22px; border-top: 1px solid var(--se-color-border); }
+@keyframes se-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* Ajustes de estado activo del sidenav en temas oscuros */
+[data-theme="dark"] .se-sidenav__link[aria-current="page"],
+[data-theme="hc"] .se-sidenav__link[aria-current="page"] { background: var(--se-color-action-subtle); color: var(--se-color-text); }
+[data-theme="dark"] .se-sidenav__link[aria-current="page"] i,
+[data-theme="hc"] .se-sidenav__link[aria-current="page"] i { color: var(--se-color-text); }

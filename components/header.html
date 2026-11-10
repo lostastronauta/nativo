@@ -1,0 +1,155 @@
+<!-- ==========================================================================
+   SUPERINTENDENCIA DE EDUCACIÓN — GOBIERNO DE CHILE
+   COMPONENTE: HEADER INSTITUCIONAL MODULAR
+   Estándar de Sitios Web del Estado: https://framework.digital.gob.cl/
+   ========================================================================== -->
+
+<header class="main-header" role="banner">
+
+  <!-- ========================================================================
+       PARTE 1: BANNER E IDENTIDAD INSTITUCIONAL
+       - Imagen oficial con carga diferida / fallback accesible
+       - Nombre de la institución y referencia a la Ley N.° 20.529
+       ======================================================================== -->
+  <div class="top-banner">
+    <a href="index.html" class="banner-link" title="Ir al inicio - Supereduc | Superintendencia de Educación">
+      <img
+        id="bannerImage"
+        src="img/banner-sie.webp"
+        alt="Supereduc | Superintendencia de Educación - Gobierno de Chile"
+        class="banner-img"
+        onerror="this.style.display='none'; document.getElementById('bannerFallback').style.display='flex';"
+      />
+    </a>
+
+    <!-- Fallback accesible si la imagen no carga o en conexiones lentas -->
+    <div id="bannerFallback" class="banner-fallback" style="display: none;" role="region" aria-label="Identidad Institucional">
+      <a href="index.html" class="fallback-link" title="Ir al inicio">
+        <div class="fallback-content">
+          <span class="inst-label">Supereduc | Superintendencia de Educación &bull; Gobierno de Chile</span>
+          <h1 class="inst-title">Supereduc | Superintendencia de Educación</h1>
+          <p class="inst-sub">Ley N.° 20.529 — Sistema Nacional de Aseguramiento de la Calidad de la Educación</p>
+        </div>
+      </a>
+      <div class="fallback-bar" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       PARTE 2: BOTÓN DE MENÚ RESPONSIVE (MÓVIL)
+       - Cumplimiento de accesibilidad WAI-ARIA (aria-expanded, aria-controls)
+       ======================================================================== -->
+  <button
+    type="button"
+    class="main-nav-toggle"
+    id="mainNavToggle"
+    aria-expanded="false"
+    aria-controls="publicNav"
+    aria-label="Abrir o cerrar menú de navegación principal"
+  >
+    <span class="main-nav-toggle-icon" aria-hidden="true">&#9776;</span>
+    <span class="main-nav-toggle-label">Menú institucional</span>
+  </button>
+
+  <!-- ========================================================================
+       PARTE 3: NAVEGACIÓN PÚBLICA (USUARIOS NO AUTENTICADOS)
+       - Enlaces a facultades, competencias, normativa y contacto
+       ======================================================================== -->
+  <nav class="public-nav" id="publicNav" role="navigation" aria-label="Navegación pública institucional">
+    <a 
+      href="https://www.supereduc.cl/competencias-supereduc/" 
+      class="nav-tab active" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      title="Conoce las competencias y facultades de la Supereduc (abre en pestaña nueva)"
+    >
+      <i class="bi bi-shield-check" aria-hidden="true"></i>
+      <span>Nuestras Competencias</span>
+    </a>
+
+    <a 
+      href="https://www.supereduc.cl/normativa/" 
+      class="nav-tab" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      title="Normativa en la comunidad escolar (abre en pestaña nueva)"
+    >
+      <i class="bi bi-people" aria-hidden="true"></i>
+      <span>Normativa</span>
+    </a>
+
+    <a 
+      href="https://www.supereduc.cl/contenidos-de-interes/" 
+      class="nav-tab" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      title="Noticias, orientaciones y contenidos de interés (abre en pestaña nueva)"
+    >
+      <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+      <span>Contenidos de Interés</span>
+    </a>
+   
+    <a 
+      href="https://www.supereduc.cl/contacto/" 
+      class="nav-tab" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      title="Canales de contacto institucional (abre en pestaña nueva)"
+    >
+      <i class="bi bi-clock-history" aria-hidden="true"></i>
+      <span>Contacto</span>
+    </a>
+  </nav>
+
+  <!-- ========================================================================
+       PARTE 4: NAVEGACIÓN PRIVADA / AUTENTICADA (USUARIOS LOGUEADOS)
+       - Breadcrumb semántico
+       - Datos del usuario logueado
+       - Acciones del sistema (Inicio, Notificaciones, Actualizar datos, Cerrar sesión)
+       ======================================================================== -->
+  <nav class="user-nav" id="userNav" style="display: none;" role="navigation" aria-label="Barra de usuario autenticado">
+    <div class="user-nav-container">
+      
+      <!-- 4.1 Miga de pan (Breadcrumb) -->
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="index.html" data-route="index.html">Inicio</a>
+        <span class="separator" aria-hidden="true">&gt;</span>
+        <span class="current-page" id="currentPage" aria-current="page">Panel Principal</span>
+      </nav>
+
+      <!-- 4.2 Perfil y acciones de usuario -->
+      <div class="user-actions">
+        <div class="user-profile" aria-label="Identidad del usuario">
+          <div class="user-icon" aria-hidden="true">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <span class="user-name" id="userName">Usuario</span>
+        </div>
+
+        <div class="user-buttons" role="group" aria-label="Acciones de sesión">
+          <button type="button" class="btn-user" data-route="pages/dashboard.html" data-nav="home" title="Ir al panel de trámites">
+            <i class="bi bi-house-door-fill" aria-hidden="true"></i>
+            <span>Inicio</span>
+          </button>
+          
+          <button type="button" class="btn-user" data-route="pages/notificaciones.html" title="Ver avisos y estados de trámites">
+            <i class="bi bi-bell-fill" aria-hidden="true"></i>
+            <span>Notificaciones</span>
+          </button>
+          
+          <button type="button" class="btn-user active-page-btn" data-route="pages/actualizar-datos.html" title="Gestionar datos personales">
+            <i class="bi bi-person-lines-fill" aria-hidden="true"></i>
+            <span>Actualizar datos</span>
+          </button>
+          
+          <button type="button" class="btn-user btn-logout" id="btnLogout" data-route="index.html" title="Cerrar la sesión de forma segura">
+            <i class="bi bi-power" aria-hidden="true"></i>
+            <span>Cerrar sesión</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+</header>
