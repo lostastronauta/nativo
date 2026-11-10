@@ -1,0 +1,2781 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supereduc | Superintendencia de Educación — Framework de Componentes TI & Brand Kit</title>
+  
+  <!-- Fuentes Institucionales -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Iconografía Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <!-- Estilos del Sistema Supereduc -->
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/landing.css">
+
+  <style>
+    /* ==========================================================================
+       ESTILOS DEL PORTAL DE COMPONENTES TI (SUPEREDUC + GOBIERNO DIGITAL)
+       ========================================================================== */
+    :root {
+      --doc-sidebar-w: 290px;
+      --doc-bg: #f8fafc;
+      --doc-card-bg: #ffffff;
+      --doc-border: #e2e8f0;
+      --doc-text-main: #1e293b;
+      --doc-text-muted: #64748b;
+      --doc-primary: #006BB9;
+      --doc-primary-hover: #25306B;
+      --doc-code-bg: #0f172a;
+      --doc-code-text: #e2e8f0;
+    }
+
+    body.doc-body {
+      background-color: var(--doc-bg);
+      color: var(--doc-text-main);
+      font-family: var(--font);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Barra Superior del Sistema de Diseño */
+    .doc-topbar {
+      background: #0a132d;
+      color: #ffffff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--se-color-brand-accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .doc-topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .doc-topbar-brand img {
+      height: 38px;
+      width: auto;
+      background: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .doc-topbar-title h1 {
+      font-size: 1.15rem;
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .doc-topbar-title span {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .doc-topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .doc-badge-gob {
+      background: rgba(0, 107, 185, 0.25);
+      border: 1px solid #006BB9;
+      color: #60a5fa;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .doc-badge-gob:hover {
+      background: #006BB9;
+      color: #fff;
+    }
+
+    /* Layout Principal: Sidebar + Contenido */
+    .doc-layout {
+      display: flex;
+      flex: 1;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Sidebar */
+    .doc-sidebar {
+      width: var(--doc-sidebar-w);
+      background: #ffffff;
+      border-right: 1px solid var(--doc-border);
+      padding: 24px 16px;
+      position: sticky;
+      top: 65px;
+      height: calc(100vh - 65px);
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+    .doc-search {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--doc-border);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      background: #f1f5f9;
+      box-sizing: border-box;
+      outline: none;
+    }
+    .doc-search:focus {
+      border-color: var(--doc-primary);
+      background: #fff;
+    }
+    .doc-nav-group {
+      margin-bottom: 22px;
+    }
+    .doc-nav-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      padding-left: 8px;
+    }
+    .doc-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .doc-nav-item {
+      margin-bottom: 2px;
+    }
+    .doc-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: var(--doc-text-main);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.15s ease-in-out;
+    }
+    .doc-nav-link:hover {
+      background: #EDF0F5;
+      color: var(--doc-primary);
+    }
+    .doc-nav-link.active {
+      background: #EDF0F5;
+      color: var(--doc-primary);
+      font-weight: 700;
+      border-left: 3px solid var(--doc-primary);
+    }
+    .doc-nav-link i {
+      font-size: 1rem;
+      color: var(--doc-text-muted);
+    }
+    .doc-nav-link:hover i,
+    .doc-nav-link.active i {
+      color: var(--doc-primary);
+    }
+
+    /* Área de Contenido */
+    .doc-content {
+      flex: 1;
+      padding: 36px 48px;
+      overflow-x: hidden;
+    }
+
+    /* Banner de bienvenida y estándares */
+    .doc-hero-notice {
+      background: var(--se-gradient-brand-deep);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(13, 42, 91, 0.2);
+    }
+    .doc-hero-notice::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255, 29, 61, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .doc-hero-notice h2 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+    .doc-hero-notice p {
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 900px;
+      margin-bottom: 18px;
+      color: #e2e8f0;
+    }
+    .doc-hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .doc-tag {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Secciones de Componentes */
+    .doc-section {
+      margin-bottom: 60px;
+      scroll-margin-top: 85px;
+    }
+    .doc-section-header {
+      border-bottom: 2px solid var(--doc-border);
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .doc-section-title {
+      font-size: 1.5rem;
+      color: #0f172a;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .doc-section-title i {
+      color: var(--doc-primary);
+    }
+    .doc-section-desc {
+      color: var(--doc-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Caja de Directrices de Gobierno Digital (Callout) */
+    .doc-gob-guideline {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .doc-gob-guideline strong {
+      color: #1e3a8a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    /* Tarjetas de Muestra / Preview del Componente */
+    .doc-component-card {
+      background: #ffffff;
+      border: 1px solid var(--doc-border);
+      border-radius: 10px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .doc-component-header {
+      padding: 14px 20px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--doc-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .doc-component-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0;
+    }
+    .doc-component-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .doc-btn-tab {
+      background: transparent;
+      border: 1px solid var(--doc-border);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--doc-text-main);
+      transition: all 0.15s;
+    }
+    .doc-btn-tab:hover {
+      background: #e2e8f0;
+    }
+    .doc-btn-tab.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+    .doc-btn-copy {
+      background: #006BB9;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+    .doc-btn-copy:hover {
+      background: #0d2a5b;
+    }
+
+    /* Contenedor de Vista Previa */
+    .doc-preview-pane {
+      padding: 28px;
+      background: #ffffff;
+      overflow-x: auto;
+    }
+    .doc-preview-pane.grey-bg {
+      background: #f1f5f9;
+    }
+
+    /* Contenedor de Código Fuente */
+    .doc-code-pane {
+      display: none;
+      background: var(--doc-code-bg);
+      padding: 20px;
+      overflow-x: auto;
+      position: relative;
+    }
+    .doc-code-pane pre {
+      margin: 0;
+      font-family: 'Fira Code', Consolas, monospace;
+      font-size: 0.85rem;
+      color: var(--doc-code-text);
+      line-height: 1.55;
+    }
+
+    /* Muestras de Color */
+    .doc-palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .doc-color-card {
+      border: 1px solid var(--doc-border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .doc-color-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+    .doc-color-swatch {
+      height: 75px;
+      width: 100%;
+      position: relative;
+    }
+    .doc-color-info {
+      padding: 12px;
+    }
+    .doc-color-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+    .doc-color-var {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--doc-primary);
+      margin-bottom: 2px;
+    }
+    .doc-color-hex {
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: var(--doc-text-muted);
+    }
+
+    /* Separación Visual de Bloques de Header/Footer */
+    .doc-part-badge {
+      display: inline-block;
+      background: #e2e8f0;
+      color: #334155;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Toast Notification */
+    .doc-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10b981;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 99999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    .doc-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .doc-layout {
+        flex-direction: column;
+      }
+      .doc-sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid var(--doc-border);
+      }
+      .doc-content {
+        padding: 24px 16px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ===== Utilidades del documento madre (nuevas secciones) ===== */
+    .doc-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: #fff; }
+    .doc-table caption { text-align: left; font-weight: 700; padding: 0 0 8px; color: #0f172a; }
+    .doc-table th, .doc-table td { border: 1px solid var(--doc-border); padding: 10px 12px; text-align: left; vertical-align: top; }
+    .doc-table th { background: #f1f5f9; color: #0f172a; font-weight: 700; }
+    .doc-table code { font-size: 0.8rem; }
+    .doc-level { display: inline-block; font-weight: 700; font-size: 0.75rem; padding: 3px 10px; border-radius: 999px; color: #fff; }
+    .doc-level.n1 { background: #0F69C4; } .doc-level.n2 { background: #003B8D; } .doc-level.n3 { background: #FF1D3D; color: #111; } .doc-level.n4 { background: #666; }
+    .doc-scale { display: grid; grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); border-radius: 8px; overflow: hidden; border: 1px solid var(--doc-border); margin-bottom: 8px; }
+    .doc-scale button { border: 0; min-height: 76px; padding: 8px 6px; font: 600 0.7rem/1.3 var(--se-font-mono); cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; text-align: left; transition: transform .12s; }
+    .doc-scale button:hover { transform: scale(1.04); position: relative; z-index: 1; box-shadow: var(--se-elevation-02); }
+    .doc-scale button:focus-visible { outline: 3px solid #FFBE5C; outline-offset: -3px; }
+    .doc-scale .is-base { outline: 3px solid #111; outline-offset: -3px; }
+    .doc-scale-title { display: flex; justify-content: space-between; align-items: baseline; margin: 18px 0 8px; gap: 10px; flex-wrap: wrap; }
+    .doc-scale-title h4 { margin: 0; font-size: 1rem; color: #0f172a; }
+    .doc-scale-title span { font-size: 0.8rem; color: var(--doc-text-muted); }
+    .doc-gradient-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; }
+    .doc-gradient-card { overflow: hidden; border: 1px solid #dbe3ee; border-radius: 12px; background: #fff; box-shadow: var(--se-elevation-01); }
+    .doc-gradient-swatch { height: 164px; position: relative; }
+    .doc-gradient-copy { position: absolute; inset: 0; width: 100%; border: 0; background: transparent; cursor: copy; }
+    .doc-gradient-copy span { position: absolute; left: 50%; bottom: 14px; transform: translate(-50%, 6px); padding: 6px 10px; border: 1px solid rgba(255,255,255,.25); border-radius: 4px; background: rgba(15,23,42,.88); color: #fff; font: 500 .78rem var(--se-font-family); white-space: nowrap; opacity: 0; transition: opacity .15s, transform .15s; }
+    .doc-gradient-copy:hover span, .doc-gradient-copy:focus-visible span { opacity: 1; transform: translate(-50%, 0); }
+    .doc-gradient-copy:focus-visible { outline: 3px solid #FFBE5C; outline-offset: -4px; }
+    .doc-gradient-copy:active { background: rgba(15,23,42,.08); }
+    .doc-gradient-info { padding: 16px; }
+    .doc-gradient-info h3 { margin: 0 0 12px; color: #1e293b; font-size: 1.05rem; }
+    .doc-gradient-colors { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font: 500 .82rem var(--se-font-mono); }
+    .doc-gradient-stop { padding: 5px 8px; border-radius: 5px; background: #f1f5f9; color: #334155; }
+    .doc-gradient-stop.is-red { background: #fff0f1; color: #c82018; }
+    .doc-gradient-arrow { color: #94a3b8; }
+    .doc-gradient-css { display: block; overflow-wrap: anywhere; color: #64748b; font: .8rem/1.5 var(--se-font-mono); }
+    .doc-gradient-token { display: block; margin-top: 8px; color: #64748b; font: .75rem/1.5 var(--se-font-mono); }
+    .doc-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .doc-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .doc-theme-preview { border-radius: 10px; padding: 22px; background: var(--se-color-bg); color: var(--se-color-text); border: 1px solid var(--se-color-border); font-family: var(--se-font-family); }
+    .doc-theme-preview h4 { margin: 0 0 6px; color: var(--se-color-text); }
+    .doc-theme-preview p { color: var(--se-color-text-muted); margin: 0 0 14px; font-size: .9rem; }
+    .doc-theme-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .doc-theme-chips span { font: 600 .7rem var(--se-font-mono); padding: 4px 8px; border-radius: 4px; border: 1px solid var(--se-color-border); }
+    .doc-token-box { width: 86px; height: 86px; background: #F2F2F2; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; box-sizing: border-box; font: 600 .7rem var(--se-font-mono); color: #003B8D; }
+    .doc-token-row { display: flex; flex-wrap: wrap; gap: 26px; align-items: flex-end; margin: 10px 0 22px; }
+    .doc-state-grid { display: grid; grid-template-columns: 170px repeat(5, minmax(110px, 1fr)); gap: 0; border: 1px solid var(--doc-border); border-radius: 8px; overflow: hidden; background: #fff; }
+    .doc-state-grid > div { padding: 12px; border-bottom: 1px solid var(--doc-border); border-right: 1px solid var(--doc-border); display: flex; align-items: center; font-size: .85rem; }
+    .doc-state-grid > .h { background: #0f172a; color: #fff; font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .5px; }
+    .doc-state-grid > .r { font-weight: 700; background: #f8fafc; }
+    @media (max-width: 1100px) { .doc-state-grid { grid-template-columns: 1fr 1fr; } .doc-state-grid > .h { display: none; } }
+    .doc-sidenav-stage { display: flex; min-height: 520px; border: 1px solid var(--doc-border); border-radius: 10px; overflow: hidden; background: #F4F6F9; position: relative; }
+    .doc-sidenav-stage main { flex: 1; padding: 24px; font-family: var(--se-font-family); }
+    .doc-nav-toggle-mobile { display: none; }
+    .doc-empty { display: none; font-size: .85rem; color: var(--doc-text-muted); padding: 8px; }
+    @media (max-width: 992px) {
+      .doc-nav-toggle-mobile { display: inline-flex; width: 100%; margin-bottom: 12px; }
+      .doc-sidebar .doc-nav-wrap { display: none; }
+      .doc-sidebar.is-open .doc-nav-wrap { display: block; }
+    }
+    .doc-nav-link:focus-visible { outline: none; box-shadow: inset 0 0 0 3px #FFBE5C; }
+  </style>
+</head>
+
+<body class="doc-body">
+
+  <!-- ========================================================================
+       BARRA SUPERIOR DE LA HERRAMIENTA TI
+       ======================================================================== -->
+  <header class="doc-topbar">
+    <a href="index.html" class="doc-topbar-brand" title="Supereduc | Superintendencia de Educación">
+      <img src="img/logo-supereduc-rojo.svg" alt="Supereduc | Superintendencia de Educación">
+      <div class="doc-topbar-title">
+        <h1>Supereduc | Superintendencia de Educación</h1>
+        <span>Kit de Desarrollo Frontend Basado en Gobierno Digital</span>
+      </div>
+    </a>
+    <div class="doc-topbar-actions">
+      <a href="https://framework.digital.gob.cl/" target="_blank" rel="noopener noreferrer" class="doc-badge-gob" title="Ver documentación oficial de Gobierno Digital">
+        <i class="bi bi-box-arrow-up-right"></i> framework.digital.gob.cl
+      </a>
+      <a href="https://www.supereduc.cl/" target="_blank" rel="noopener noreferrer" class="btn-user" style="padding: 6px 12px; font-size: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color:#fff; border-radius:4px; text-decoration:none;" title="Sitio Oficial Supereduc">
+        <i class="bi bi-globe"></i> Portal Supereduc
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       LAYOUT PRINCIPAL: SIDEBAR + ÁREA DE CONTENIDO
+       ======================================================================== -->
+  <div class="doc-layout">
+
+    <!-- SIDEBAR DE NAVEGACIÓN -->
+    <aside class="doc-sidebar">
+      <button type="button" class="se-btn se-btn--secondary se-btn--sm doc-nav-toggle-mobile" id="docNavToggle" aria-expanded="false" aria-controls="docNavWrap"><i class="bi bi-list"></i> Índice del Brand Kit</button>
+      <input type="search" id="docSearchInput" class="doc-search" placeholder="Buscar componente o módulo..." aria-label="Buscar componente">
+      <nav class="doc-nav-wrap" id="docNavWrap" aria-label="Índice del documento madre">
+      <div class="doc-nav-group">
+        <div class="doc-nav-label">0 · Documento Madre</div>
+        <ul class="doc-nav-list">
+          <li class="doc-nav-item"><a href="#documento-madre" class="doc-nav-link active"><i class="bi bi-diagram-3"></i> Jerarquía y Preponderancia</a></li>
+          <li class="doc-nav-item"><a href="#casos-de-uso" class="doc-nav-link"><i class="bi bi-signpost-split"></i> Casos de Uso y Conceptos</a></li>
+        </ul>
+      </div>
+      <div class="doc-nav-group">
+        <div class="doc-nav-label">1 · Directrices y Estándar</div>
+        <ul class="doc-nav-list">
+          <li class="doc-nav-item"><a href="#gob-framework" class="doc-nav-link"><i class="bi bi-award"></i> Marco de Gobierno Digital</a></li>
+          <li class="doc-nav-item"><a href="#accesibilidad" class="doc-nav-link"><i class="bi bi-universal-access"></i> Accesibilidad (WCAG 2.1 AA)</a></li>
+        </ul>
+      </div>
+      <div class="doc-nav-group">
+        <div class="doc-nav-label">2 · Fundamentos Visuales</div>
+        <ul class="doc-nav-list">
+          <li class="doc-nav-item"><a href="#tokens-colores" class="doc-nav-link"><i class="bi bi-palette"></i> Paleta de Colores Base</a></li>
+          <li class="doc-nav-item"><a href="#gradientes-institucionales" class="doc-nav-link"><i class="bi bi-droplet-half"></i> Gradientes Institucionales</a></li>
+          <li class="doc-nav-item"><a href="#escalas-color" class="doc-nav-link"><i class="bi bi-palette2"></i> Variantes y Matices de Color</a></li>
+          <li class="doc-nav-item"><a href="#temas" class="doc-nav-link"><i class="bi bi-circle-half"></i> Temas Light / Dark / Alto Contraste</a></li>
+          <li class="doc-nav-item"><a href="#tipografia" class="doc-nav-link"><i class="bi bi-type"></i> Tipografía y Textos</a></li>
+          <li class="doc-nav-item"><a href="#tipografia-escala" class="doc-nav-link"><i class="bi bi-fonts"></i> Escala Tipográfica (Desktop/Mobile)</a></li>
+          <li class="doc-nav-item"><a href="#tokens-efectos" class="doc-nav-link"><i class="bi bi-layers"></i> Tokens: Elevación, Bordes, Radios</a></li>
+        </ul>
+      </div>
+      <div class="doc-nav-group">
+        <div class="doc-nav-label">3 · Interacción UI/UX</div>
+        <ul class="doc-nav-list">
+          <li class="doc-nav-item"><a href="#estados-interaccion" class="doc-nav-link"><i class="bi bi-hand-index"></i> Estados Hover · Focus · Active</a></li>
+        </ul>
+      </div>
+      <div class="doc-nav-group">
+        <div class="doc-nav-label">4 · Módulos Estructurales</div>
+        <ul class="doc-nav-list">
+          <li class="doc-nav-item"><a href="#modulo-header" class="doc-nav-link"><i class="bi bi-layout-text-window-reverse"></i> Header Separado por Partes</a></li>
+          <li class="doc-nav-item"><a href="#modulo-footer" class="doc-nav-link"><i class="bi bi-layout-text-window"></i> Footer Separado por Partes</a></li>
+          <li class="doc-nav-item"><a href="#modulo-claveunica" class="doc-nav-link"><i class="bi bi-person-badge"></i> Botón &amp; Modal ClaveÚnica</a></li>
+          <li class="doc-nav-item"><a href="#menu-lateral" class="doc-nav-link"><i class="bi bi-layout-sidebar"></i> Menú Lateral (Sidenav)</a></li>
+        </ul>
+      </div>
+      <div class="doc-nav-group">
+        <div class="doc-nav-label">5 · Componentes de Interfaz</div>
+        <ul class="doc-nav-list">
+          <li class="doc-nav-item"><a href="#componente-botones" class="doc-nav-link"><i class="bi bi-ui-radios-grid"></i> Botones y Acciones</a></li>
+          <li class="doc-nav-item"><a href="#componente-formularios" class="doc-nav-link"><i class="bi bi-input-cursor-text"></i> Formularios y Validación RUT</a></li>
+          <li class="doc-nav-item"><a href="#componente-cards" class="doc-nav-link"><i class="bi bi-card-heading"></i> Tarjetas (Cards)</a></li>
+          <li class="doc-nav-item"><a href="#componente-alertas" class="doc-nav-link"><i class="bi bi-exclamation-triangle"></i> Alertas y Callouts</a></li>
+          <li class="doc-nav-item"><a href="#componente-tablas" class="doc-nav-link"><i class="bi bi-table"></i> Tablas y Paginación</a></li>
+          <li class="doc-nav-item"><a href="#componente-modales" class="doc-nav-link"><i class="bi bi-window-stack"></i> Modales y Diálogos</a></li>
+          <li class="doc-nav-item"><a href="#componente-tabs" class="doc-nav-link"><i class="bi bi-segmented-nav"></i> Pestañas y Acordeones</a></li>
+        </ul>
+      </div>
+      <div class="doc-nav-group">
+        <div class="doc-nav-label">6 · Recursos para TI</div>
+        <ul class="doc-nav-list">
+          <li class="doc-nav-item"><a href="#plantilla-base" class="doc-nav-link"><i class="bi bi-file-earmark-code"></i> Boilerplate HTML5 Base</a></li>
+          <li class="doc-nav-item"><a href="#tokens-css" class="doc-nav-link"><i class="bi bi-braces"></i> Archivo tokens.css</a></li>
+        </ul>
+      </div>
+      <p class="doc-empty" id="docNavEmpty">Sin resultados para la búsqueda.</p>
+      </nav>
+    </aside>
+
+    <!-- ÁREA DE CONTENIDO -->
+    <main class="doc-content">
+
+      <!-- BANNER DE ENCABEZADO -->
+      <div class="doc-hero-notice">
+        <h2>Guía y Repositorio de Componentes Frontend para TI</h2>
+        <p>
+          Este <strong>Documento Madre institucional</strong> establece el estándar de diseño y desarrollo frontend de la <strong>Superintendencia de Educación</strong>. Está dirigido a los equipos TI internos y a los proveedores futuros que implementen sus plataformas, en alineación con el <strong>Framework de Sitios Web del Estado</strong> (<a href="https://framework.digital.gob.cl/" target="_blank" rel="noopener noreferrer" style="color: #67e8f9; text-decoration: underline;">https://framework.digital.gob.cl/</a>).
+        </p>
+        <div class="doc-hero-badges">
+          <span class="doc-tag"><i class="bi bi-check2-circle"></i> Header y Footer Modularizados</span>
+          <span class="doc-tag"><i class="bi bi-shield-lock"></i> Integración ClaveÚnica Normada</span>
+          <span class="doc-tag"><i class="bi bi-eye"></i> WCAG 2.1 Nivel AA</span>
+          <span class="doc-tag"><i class="bi bi-phone"></i> Mobile-First</span>
+          <span class="doc-tag"><i class="bi bi-filetype-html"></i> Copy &amp; Paste para TI</span>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECCIÓN 0: DOCUMENTO MADRE — JERARQUÍA Y PREPONDERANCIA
+           ==================================================================== -->
+      <section id="documento-madre" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-diagram-3"></i> Documento Madre: Jerarquía y Preponderancia</h2>
+          <span class="doc-badge-gob">Versión 2.0 · Noviembre 2026</span>
+        </div>
+        <p class="doc-section-desc">
+          Este Brand Kit es el <strong>Documento Madre institucional</strong> y la referencia oficial para los equipos TI de <strong>Supereduc | Superintendencia de Educación</strong> y para proveedores futuros. Articula el <a class="se-link" href="https://framework.digital.gob.cl/" target="_blank" rel="noopener noreferrer">Framework de Gobierno Digital</a>, el Sistema de Diseño propio de Supereduc y su identidad institucional. El Sistema de Diseño Supereduc constituye el estándar operativo N2 y se aplica en coherencia con el marco de Gobierno Digital. Cuando dos fuentes definan algo distinto, <strong>prevalece el nivel superior</strong>.
+        </p>
+
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <table class="doc-table">
+              <caption>Tabla 0.1 — Niveles de preponderancia normativa</caption>
+              <thead><tr><th style="width:110px">Nivel</th><th>Fuente</th><th>Qué define (alcance)</th><th>Regla</th></tr></thead>
+              <tbody>
+                <tr><td><span class="doc-level n1">N1 · Manda</span></td><td><strong>framework.digital.gob.cl</strong><br>Kit Digital de Gobierno</td><td>Accesibilidad WCAG 2.1 AA, botón ClaveÚnica, estructura de header/footer, barra tricolor, color de foco, componentes base.</td><td>Obligatorio. No se modifica.</td></tr>
+                <tr><td><span class="doc-level n2">N2 · Sistema</span></td><td><strong>Sistema de Diseño Supereduc</strong><br>Estándar institucional</td><td>Tokens de UI: color de acción <code>#0F69C4</code>, estados semánticos, temas light/dark/alto contraste, escala tipográfica Roboto, elevaciones, bordes, radios y componentes.</td><td>Estándar operativo institucional, alineado con el Framework de Gobierno Digital. Se aplica en todo componente interactivo.</td></tr>
+                <tr><td><span class="doc-level n3">N3 · Marca</span></td><td><strong>Paleta institucional oficial</strong></td><td>Azul oscuro <code>#25306B</code>, azul claro <code>#006BB9</code>, blanco grisáceo <code>#EDF0F5</code> y rojo <code>#FF1D3D</code>, además de logotipos, banners y títulos institucionales.</td><td>Se aplica a identidad y superficies de marca; no reemplaza los tokens semánticos de acción o estado.</td></tr>
+                <tr><td><span class="doc-level n4">N4 · Proyecto</span></td><td><strong>Implementación TI</strong></td><td>Ajustes de cada sistema (intranet, portales, formularios).</td><td>Puede <em>extender</em> tokens, nunca sobrescribirlos.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="doc-gob-guideline">
+          <strong><i class="bi bi-exclamation-diamond-fill"></i> Reglas de resolución de conflictos</strong>
+          <ol style="margin: 8px 0 0 20px; padding: 0;">
+            <li><strong>Acción vs. Marca:</strong> los elementos interactivos de acción y navegación usan <code>--se-color-action</code> (<code>#0F69C4</code>). La paleta institucional (<code>#25306B</code>, <code>#006BB9</code>, <code>#EDF0F5</code>, <code>#FF1D3D</code>) se reserva para identidad y superficies de marca.</li>
+            <li><strong>Error vs. Rojo institucional:</strong> los mensajes de error usan <code>--se-color-error</code>; el rojo institucional <code>#FF1D3D</code> no sustituye el token semántico de error.</li>
+            <li><strong>ClaveÚnica:</strong> se usa siempre la especificación oficial (N1); ningún token de marca puede alterarla.</li>
+            <li><strong>Foco:</strong> el anillo amarillo <code>#FFBE5C</code> es único y obligatorio en todos los elementos interactivos.</li>
+            <li><strong>Componentes:</strong> nunca usar valores HEX directos; usar los tokens semánticos de <code>css/tokens.css</code>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="casos-de-uso" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-signpost-split"></i> Casos de Uso y Definición de Conceptos</h2>
+        </div>
+        <p class="doc-section-desc">Matriz de decisión rápida: identifique el caso, use el token indicado y respete el nivel que lo origina.</p>
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <table class="doc-table">
+              <caption>Tabla 0.2 — Caso de uso → token → nivel</caption>
+              <thead><tr><th>Caso de uso</th><th>Token / Componente</th><th>Valor light</th><th>Nivel</th></tr></thead>
+              <tbody>
+                <tr><td>Acción principal de un flujo (Enviar, Aceptar)</td><td><code>.se-btn--primary</code> · <code>--se-color-action</code></td><td>#0F69C4 → hover #003B8D</td><td><span class="doc-level n2">N2</span></td></tr>
+                <tr><td>Acción alternativa (Cancelar, Copiar)</td><td><code>.se-btn--secondary</code></td><td>borde #0F69C4</td><td><span class="doc-level n2">N2</span></td></tr>
+                <tr><td>Navegación de bajo peso (Siguiente, Ver más)</td><td><code>.se-btn--tertiary</code></td><td>texto #0F69C4</td><td><span class="doc-level n2">N2</span></td></tr>
+                <tr><td>Enlace en texto</td><td><code>.se-link</code> · <code>--se-color-link</code></td><td>#1D70B8 / visitado #4C2C92</td><td><span class="doc-level n2">N2</span></td></tr>
+                <tr><td>Inicio de sesión con identidad del Estado</td><td><code>.se-btn-cu</code></td><td>#0F69C4 → hover #0B457F</td><td><span class="doc-level n1">N1</span></td></tr>
+                <tr><td>Foco de teclado</td><td><code>--se-focus-ring</code></td><td>#FFBE5C</td><td><span class="doc-level n1">N1</span></td></tr>
+                <tr><td>Header, banner, títulos institucionales</td><td><code>--se-color-brand</code></td><td>#25306B</td><td><span class="doc-level n3">N3</span></td></tr>
+                <tr><td>Acentos de identidad y marca</td><td><code>--se-color-brand-accent</code></td><td>#FF1D3D</td><td><span class="doc-level n3">N3</span></td></tr>
+                <tr><td>Azul institucional claro</td><td><code>--se-brand-azul-claro</code></td><td>#006BB9</td><td><span class="doc-level n3">N3</span></td></tr>
+                <tr><td>Indicador lateral del ítem activo en Sidenav</td><td><code>--se-color-action</code></td><td>#0F69C4</td><td><span class="doc-level n2">N2</span></td></tr>
+                <tr><td>Fondos suaves institucionales (chips, filas activas)</td><td><code>--se-brand-blanco-grisaceo</code></td><td>#EDF0F5</td><td><span class="doc-level n3">N3</span></td></tr>
+                <tr><td>Mensaje de éxito / info / advertencia / error</td><td><code>--se-color-{estado}</code> (+ <code>-bg</code>, <code>-text</code>)</td><td>#4CAF50 · #2196F3 · #FF5722 · #FB3B3B</td><td><span class="doc-level n2">N2</span></td></tr>
+                <tr><td>Texto de cuerpo / secundario</td><td><code>--se-color-text / -muted</code></td><td>#373737 / #666666</td><td><span class="doc-level n2">N2</span></td></tr>
+                <tr><td>Tarjetas, menús desplegables, modales</td><td><code>--se-elevation-01/02/03</code></td><td>sombras 3 niveles</td><td><span class="doc-level n2">N2</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="doc-grid-3">
+          <div class="se-card"><strong>Token primitivo</strong><p style="margin:6px 0 0;font-size:.88rem;color:#666">Valor crudo de la paleta (<code>--se-primary-500</code>). No se usa directo en componentes.</p></div>
+          <div class="se-card"><strong>Token semántico</strong><p style="margin:6px 0 0;font-size:.88rem;color:#666">Rol de uso (<code>--se-color-action</code>). Cambia automáticamente según tema.</p></div>
+          <div class="se-card"><strong>Estado de interacción</strong><p style="margin:6px 0 0;font-size:.88rem;color:#666">Default, hover (roll-over / mouse over), focus, active (pressed) y disabled.</p></div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 1: MARCO DE GOBIERNO DIGITAL
+           ==================================================================== -->
+      <section id="gob-framework" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-award"></i> Marco de Gobierno Digital de Chile</h2>
+          <span class="doc-badge-gob">Norma Técnica de Interoperabilidad y Sitios Web</span>
+        </div>
+        <p class="doc-section-desc">
+          El Estado de Chile a través de la División de Gobierno Digital (Ministerio de Hacienda) establece lineamientos obligatorios para garantizar la coherencia visual, usabilidad y accesibilidad universal en todas las plataformas digitales públicas.
+        </p>
+
+        <div class="doc-gob-guideline">
+          <strong><i class="bi bi-info-circle-fill"></i> Principios Fundamentales del Framework Digital Gob.cl:</strong>
+          <ul style="margin: 8px 0 0 20px; padding: 0;">
+            <li><strong>Centrado en las personas:</strong> Interfaces intuitivas, con lenguaje claro y jerarquía de información orientada a facilitar la realización de trámites ciudadanos.</li>
+            <li><strong>Accesibilidad Universal (Decreto N.° 1/2015):</strong> Cumplimiento estricto del estándar internacional W3C/WAI WCAG 2.1 nivel AA. Toda la información debe ser perceptible, operable, comprensible y robusta.</li>
+            <li><strong>Identidad Homogénea del Estado:</strong> Respeto a los logotipos ministeriales, paleta de colores del gobierno, botón institucional ClaveÚnica y remate de pie de página tricolor.</li>
+            <li><strong>Diseño Mobile-First y Adaptable:</strong> Toda herramienta debe funcionar de forma óptima en teléfonos inteligentes, tablets y computadores de escritorio.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 1.2: ACCESIBILIDAD
+           ==================================================================== -->
+      <section id="accesibilidad" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-universal-access"></i> Accesibilidad (WCAG 2.1 AA)</h2>
+          <span class="doc-badge-gob">Decreto N.° 1/2015 · Nivel N1</span>
+        </div>
+        <p class="doc-section-desc">Requisitos mínimos obligatorios para cualquier desarrollo de Supereduc, alineados con framework.digital.gob.cl.</p>
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <table class="doc-table">
+              <caption>Checklist de aceptación para TI</caption>
+              <thead><tr><th>Criterio</th><th>Requisito</th><th>Cómo cumplirlo</th></tr></thead>
+              <tbody>
+                <tr><td>1.4.3 Contraste</td><td>Texto ≥ 4.5:1 · texto grande ≥ 3:1</td><td>Texto sobre blanco: <code>#373737</code>. Texto blanco sólo sobre <code>#0F69C4</code> o más oscuro. Para éxito/error en texto use las variantes <code>-900</code>.</td></tr>
+                <tr><td>1.4.11 Contraste no textual</td><td>Bordes de controles ≥ 3:1</td><td>Inputs con borde <code>--se-color-border-strong</code> (#666).</td></tr>
+                <tr><td>2.1.1 Teclado</td><td>Todo operable con teclado</td><td>Usar <code>&lt;button&gt;</code> y <code>&lt;a href&gt;</code> nativos; Esc cierra modales y menús.</td></tr>
+                <tr><td>2.4.7 Foco visible</td><td>Indicador de foco claro</td><td><code>:focus-visible</code> con <code>--se-focus-ring</code> (#FFBE5C, 3px).</td></tr>
+                <tr><td>2.5.5 Área táctil</td><td>Objetivo ≥ 44×44 px</td><td>Botones y links de menú con <code>min-height: 44px</code>.</td></tr>
+                <tr><td>1.3.1 Semántica</td><td>Estructura y roles</td><td><code>header/nav/main/footer</code>, <code>aria-current="page"</code>, <code>aria-expanded</code>, <code>aria-controls</code>.</td></tr>
+                <tr><td>2.3.3 Movimiento</td><td>Respetar preferencia del usuario</td><td>Tokens de duración = 0 con <code>prefers-reduced-motion</code>.</td></tr>
+                <tr><td>1.4.1 Uso del color</td><td>No depender sólo del color</td><td>Errores con ícono + texto; links subrayados.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 2: PALETA DE COLORES & TOKENS
+           ==================================================================== -->
+      <section id="tokens-colores" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-palette"></i> Paleta de Colores y Tokens CSS</h2>
+          <span style="font-size: 0.85rem; color: var(--doc-text-muted);">Haz clic en cualquier muestra para copiar su valor</span>
+        </div>
+        <p class="doc-section-desc">
+          Definición de tokens en <code>css/site.css</code> alineados con el estándar de Gobierno Digital y la identidad corporativa de la Superintendencia de Educación.
+        </p>
+
+        <!-- Paleta institucional oficial -->
+        <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: #1e293b;">1. Paleta Institucional Oficial de Gobierno</h3>
+        <p class="doc-section-desc">Utilice los códigos HEX exactos de la guía institucional. Los valores RGB, CMYK y Pantone son referencias de producción gráfica; para interfaces digitales se recomienda aplicar HEX mediante los tokens.</p>
+        <div class="doc-palette-grid">
+          <div class="doc-color-card" onclick="copyText('#25306B')">
+            <div class="doc-color-swatch" style="background: #25306B;"></div>
+            <div class="doc-color-info">
+              <div class="doc-color-name">Azul oscuro</div>
+              <div class="doc-color-var">--se-brand-azul-oscuro</div>
+              <div class="doc-color-hex">#25306B · RGB 37, 48, 107 · CMYK 100%, 90%, 28%, 14% · Pantone 2756C</div>
+            </div>
+          </div>
+          <div class="doc-color-card" onclick="copyText('#006BB9')">
+            <div class="doc-color-swatch" style="background: #006BB9;"></div>
+            <div class="doc-color-info">
+              <div class="doc-color-name">Azul claro</div>
+              <div class="doc-color-var">--se-brand-azul-claro</div>
+              <div class="doc-color-hex">#006BB9 · RGB 0, 107, 185 · CMYK 88%, 53%, 0%, 0% · Pantone 2175C</div>
+            </div>
+          </div>
+          <div class="doc-color-card" onclick="copyText('#EDF0F5')">
+            <div class="doc-color-swatch" style="background: #EDF0F5; border-bottom: 1px solid #ccc;"></div>
+            <div class="doc-color-info">
+              <div class="doc-color-name">Blanco grisáceo</div>
+              <div class="doc-color-var">--se-brand-blanco-grisaceo</div>
+              <div class="doc-color-hex">#EDF0F5 · RGB 237, 240, 245 · CMYK 9%, 4%, 3%, 0% · Pantone 663C</div>
+            </div>
+          </div>
+          <div class="doc-color-card" onclick="copyText('#FF1D3D')">
+            <div class="doc-color-swatch" style="background: #FF1D3D;"></div>
+            <div class="doc-color-info">
+              <div class="doc-color-name">Rojo institucional</div>
+              <div class="doc-color-var">--se-brand-rojo</div>
+              <div class="doc-color-hex">#FF1D3D · RGB 255, 29, 61 · CMYK 0%, 92%, 76%, 0% · Pantone 1788C</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colores de ClaveÚnica y de estado -->
+        <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: #1e293b;">2. Colores de ClaveÚnica y de Estado</h3>
+        <div class="doc-palette-grid">
+          <div class="doc-color-card" onclick="copyText('#0b457f')">
+            <div class="doc-color-swatch" style="background: #0b457f;"></div>
+            <div class="doc-color-info">
+              <div class="doc-color-name">ClaveÚnica Azul Oficial</div>
+              <div class="doc-color-var">--cu-azul</div>
+              <div class="doc-color-hex">#0b457f / #0f69c4</div>
+            </div>
+          </div>
+          <div class="doc-color-card" onclick="copyText('#e31837')">
+            <div class="doc-color-swatch" style="background: #e31837;"></div>
+            <div class="doc-color-info">
+              <div class="doc-color-name">ClaveÚnica Rojo Oficial</div>
+              <div class="doc-color-var">--cu-rojo</div>
+              <div class="doc-color-hex">#e31837</div>
+            </div>
+          </div>
+          <div class="doc-color-card" onclick="copyText('#7da55c')">
+            <div class="doc-color-swatch" style="background: #7da55c;"></div>
+            <div class="doc-color-info">
+              <div class="doc-color-name">Verde Estado / Éxito</div>
+              <div class="doc-color-var">--verde</div>
+              <div class="doc-color-hex">#7da55c</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gradientes-institucionales" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-droplet-half"></i> Gradientes Institucionales Oficiales</h2>
+          <span class="doc-badge-gob">Sistema de Diseño Supereduc · N3</span>
+        </div>
+        <p class="doc-section-desc">Degradados institucionales para superficies destacadas, banners y recursos gráficos. Seleccione una muestra para copiar su valor CSS; use los tokens oficiales para mantener consistencia entre plataformas.</p>
+        <div class="doc-gradient-grid">
+          <article class="doc-gradient-card">
+            <div class="doc-gradient-swatch" style="background:var(--se-gradient-brand-deep)">
+              <button type="button" class="doc-gradient-copy" aria-label="Copiar CSS del Gradiente Azul Profundo" onclick="copyText('linear-gradient(135deg, #25306B, #2C3D9E)', 'CSS del gradiente azul profundo copiado')"><span>Clic para copiar gradiente CSS</span></button>
+            </div>
+            <div class="doc-gradient-info">
+              <h3>Gradiente Azul Profundo</h3>
+              <div class="doc-gradient-colors"><span class="doc-gradient-stop">#25306B</span><span class="doc-gradient-arrow" aria-hidden="true">→</span><span class="doc-gradient-stop">#2C3D9E</span></div>
+              <code class="doc-gradient-css">linear-gradient(135deg, #25306B, #2C3D9E)</code>
+              <span class="doc-gradient-token">Token: --se-gradient-brand-deep</span>
+            </div>
+          </article>
+          <article class="doc-gradient-card">
+            <div class="doc-gradient-swatch" style="background:var(--se-gradient-brand-blue)">
+              <button type="button" class="doc-gradient-copy" aria-label="Copiar CSS del Gradiente Azul Institucional" onclick="copyText('linear-gradient(135deg, #25306B, #006BB9)', 'CSS del gradiente azul institucional copiado')"><span>Clic para copiar gradiente CSS</span></button>
+            </div>
+            <div class="doc-gradient-info">
+              <h3>Gradiente Azul Institucional</h3>
+              <div class="doc-gradient-colors"><span class="doc-gradient-stop">#25306B</span><span class="doc-gradient-arrow" aria-hidden="true">→</span><span class="doc-gradient-stop">#006BB9</span></div>
+              <code class="doc-gradient-css">linear-gradient(135deg, #25306B, #006BB9)</code>
+              <span class="doc-gradient-token">Token: --se-gradient-brand-blue</span>
+            </div>
+          </article>
+          <article class="doc-gradient-card">
+            <div class="doc-gradient-swatch" style="background:var(--se-gradient-brand-red-neutral)">
+              <button type="button" class="doc-gradient-copy" aria-label="Copiar CSS del Gradiente Rojo a Blanco Grisáceo" onclick="copyText('linear-gradient(135deg, #FF1D3D, #EDF0F5)', 'CSS del gradiente rojo a blanco grisáceo copiado')"><span>Clic para copiar gradiente CSS</span></button>
+            </div>
+            <div class="doc-gradient-info">
+              <h3>Gradiente Rojo a Blanco Grisáceo</h3>
+              <div class="doc-gradient-colors"><span class="doc-gradient-stop is-red">#FF1D3D</span><span class="doc-gradient-arrow" aria-hidden="true">→</span><span class="doc-gradient-stop">#EDF0F5</span></div>
+              <code class="doc-gradient-css">linear-gradient(135deg, #FF1D3D, #EDF0F5)</code>
+              <span class="doc-gradient-token">Token: --se-gradient-brand-red-neutral</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 2.2: VARIANTES Y MATICES DE COLOR
+           ==================================================================== -->
+      <section id="escalas-color" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-palette2"></i> Variantes y Matices de Color (Jerarquía)</h2>
+          <span class="doc-badge-gob">Clic en un tono para copiar el HEX</span>
+        </div>
+        <p class="doc-section-desc">
+          Escalas institucionales <em>Lighten → Base → Darken</em> del Sistema de Diseño Supereduc, alineadas con el Framework de Gobierno Digital e integradas con los matices de la identidad oficial. El tono <strong>500</strong> (marcado con borde) es el color base; los tonos inferiores (50–400) se usan para fondos y estados suaves, y los superiores (600–900) para hover, active y texto sobre fondos claros.
+        </p>
+
+        <h3 style="font-size:1.1rem;margin:0 0 4px;color:#1e293b;">A. Colores básicos de sistema <span class="doc-level n2">N2</span></h3>
+        <div id="scalesSystem"></div>
+
+        <h3 style="font-size:1.1rem;margin:26px 0 4px;color:#1e293b;">B. Colores de estado <span class="doc-level n2">N2</span></h3>
+        <div id="scalesStates"></div>
+
+        <h3 style="font-size:1.1rem;margin:26px 0 4px;color:#1e293b;">C. Identidad Supereduc — matices bajo el color oficial <span class="doc-level n3">N3</span></h3>
+        <div id="scalesBrand"></div>
+
+        <div class="doc-component-card" style="margin-top:22px;">
+          <div class="doc-preview-pane">
+            <table class="doc-table">
+              <caption>Jerarquía de uso por tono</caption>
+              <thead><tr><th>Tono</th><th>Uso recomendado</th><th>Ejemplo</th></tr></thead>
+              <tbody>
+                <tr><td>50 – 100</td><td>Fondos de sección, fila activa, chip, fondo de alerta</td><td>Ítem activo del menú lateral (<code>--se-brand-azul-50</code>)</td></tr>
+                <tr><td>200 – 400</td><td>Bordes decorativos, ilustraciones, variantes en tema oscuro</td><td>Variante primaria dark (<code>#649CFD</code>)</td></tr>
+                <tr><td><strong>500</strong></td><td><strong>Color oficial / base</strong></td><td>Botón primario, header institucional</td></tr>
+                <tr><td>600 – 700</td><td>Hover / roll-over, texto sobre fondo claro</td><td>Hover primario <code>#003B8D</code></td></tr>
+                <tr><td>800 – 900</td><td>Active (pressed), footer, superficies oscuras</td><td>Active primario <code>#00135A</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 2.3: TEMAS
+           ==================================================================== -->
+      <section id="temas" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-circle-half"></i> Temas: Light, Dark y Alto Contraste</h2>
+          <span class="doc-badge-gob">Atributo <code>data-theme</code></span>
+        </div>
+        <p class="doc-section-desc">Los tokens semánticos se reasignan por tema. Se activa con <code>&lt;html data-theme="dark"&gt;</code> o <code>data-theme="hc"</code>. Los componentes no requieren cambios.</p>
+        <div class="doc-grid-3">
+          <div class="doc-theme-preview" data-theme="light">
+            <h4>Light theme</h4><p>Fondo #FFFFFF · Texto #373737</p>
+            <button class="se-btn se-btn--primary se-btn--sm">Aceptar</button>
+            <button class="se-btn se-btn--secondary se-btn--sm">Cancelar</button>
+            <p style="margin-top:12px"><a class="se-link" href="#temas">Enlace de ejemplo</a></p>
+            <div class="doc-theme-chips"><span style="background:#0F69C4;color:#fff">#0F69C4</span><span style="background:#003B8D;color:#fff">#003B8D</span><span style="background:#FF4731;color:#fff">#FF4731</span><span style="background:#4CAF50">#4CAF50</span><span style="background:#FB3B3B;color:#fff">#FB3B3B</span><span style="background:#FFBE5C">#FFBE5C</span></div>
+          </div>
+          <div class="doc-theme-preview" data-theme="dark">
+            <h4>Dark theme</h4><p>Fondo #373737 · Texto #FFFFFF</p>
+            <button class="se-btn se-btn--primary se-btn--sm">Aceptar</button>
+            <button class="se-btn se-btn--secondary se-btn--sm">Cancelar</button>
+            <p style="margin-top:12px"><a class="se-link" href="#temas">Enlace de ejemplo</a></p>
+            <div class="doc-theme-chips"><span style="background:#0F69C4;color:#fff">#0F69C4</span><span style="background:#649CFD">#649CFD</span><span style="background:#FF4731;color:#fff">#FF4731</span><span style="background:#FFECEF;color:#373737">#FFECEF</span><span style="background:#4CAF50">#4CAF50</span><span style="background:#FFBE5C;color:#373737">#FFBE5C</span></div>
+          </div>
+          <div class="doc-theme-preview" data-theme="hc">
+            <h4>Alto contraste</h4><p>Fondo #000000 · Texto #FFFFFF</p>
+            <button class="se-btn se-btn--primary se-btn--sm">Aceptar</button>
+            <button class="se-btn se-btn--secondary se-btn--sm">Cancelar</button>
+            <p style="margin-top:12px"><a class="se-link" href="#temas">Enlace de ejemplo</a></p>
+            <div class="doc-theme-chips"><span style="background:#0F69C4;color:#fff">#0F69C4</span><span style="background:#649CFD">#649CFD</span><span style="background:#FFFF00;color:#000">#FFFF00</span><span style="background:#00FFFF;color:#000">#00FFFF</span><span style="background:#fff;color:#000">#FFFFFF</span></div>
+          </div>
+        </div>
+        <div class="doc-component-card" style="margin-top:20px;">
+          <div class="doc-preview-pane">
+            <table class="doc-table">
+              <caption>Mapeo de tokens por tema del Sistema de Diseño Supereduc</caption>
+              <thead><tr><th>Rol</th><th>Light</th><th>Dark</th><th>Alto contraste</th></tr></thead>
+              <tbody>
+                <tr><td>Primario (base / variante)</td><td>#0F69C4 / #003B8D</td><td>#0F69C4 / #649CFD</td><td>#0F69C4 / #649CFD</td></tr>
+                <tr><td>Fondo</td><td>#FFFFFF</td><td>#373737</td><td>#000000</td></tr>
+                <tr><td>Accent</td><td>#FF4731 / #F37874</td><td>#FF4731 / #FFECEF</td><td>#FFFF00 / #00FFFF</td></tr>
+                <tr><td>Éxito</td><td>#4CAF50</td><td>#4CAF50</td><td>#00FFFF</td></tr>
+                <tr><td>Error</td><td>#FB3B3B</td><td>#FB3B3B</td><td>#FFFF00</td></tr>
+                <tr><td>Focus</td><td>#FFBE5C</td><td>#FFBE5C</td><td>#FFFFFF</td></tr>
+                <tr><td>Texto</td><td>#373737</td><td>#FFFFFF</td><td>#FFFFFF</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 3: TIPOGRAFÍA Y ACCESIBILIDAD
+           ==================================================================== -->
+      <section id="tipografia" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-type"></i> Tipografía Oficial y Jerarquía</h2>
+        </div>
+        <p class="doc-section-desc">
+          El estándar tipográfico institucional Supereduc adopta <strong>Roboto</strong> y una escala responsive propia, alineada con los criterios de legibilidad y accesibilidad del Framework de Gobierno Digital. Deben mantenerse jerarquías claras y alturas de línea confortables para lectura continua.
+        </p>
+
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <h1 style="font-size: 2.2rem; margin-bottom: 8px; color: var(--azul);">H1 - Título Principal de Página (32px - 36px)</h1>
+            <h2 style="font-size: 1.7rem; margin-bottom: 8px; color: var(--azul-oscuro);">H2 - Encabezado de Sección o Trámite (24px - 28px)</h2>
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: var(--texto);">H3 - Subsección o Tarjeta de Servicio (20px - 22px)</h3>
+            <h4 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--texto);">H4 - Título de Bloque o Formulario (18px)</h4>
+            <p style="font-size: 1rem; line-height: 1.6; color: var(--texto-claro); margin-bottom: 12px;">
+              <strong>Párrafo Regular (16px / 1rem):</strong> Este es el cuerpo de texto principal utilizado en las descripciones de servicios, antecedentes de denuncias y comunicaciones ciudadanas. El contraste respecto al fondo blanco (#FFFFFF) supera con creces el umbral WCAG 2.1 AA de 4.5:1.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--texto-muted); margin-bottom: 0;">
+              <small>Texto secundario, pies de página o aclaratorias de formularios (13px - 14px / 0.85rem).</small>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 2.5: ESCALA TIPOGRÁFICA INSTITUCIONAL
+           ==================================================================== -->
+      <section id="tipografia-escala" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-fonts"></i> Escala Tipográfica Roboto (Desktop / Mobile)</h2>
+          <span class="doc-badge-gob">Base 16px · line-height 1.5</span>
+        </div>
+        <p class="doc-section-desc">Escala tipográfica oficial del Sistema de Diseño Supereduc (N2), alineada con el Framework de Gobierno Digital. Los tokens <code>--se-fs-*</code> cambian automáticamente en pantallas ≤ 768px.</p>
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <table class="doc-table">
+              <thead><tr><th>Estilo</th><th>Etiqueta</th><th>Token</th><th>Desktop</th><th>Mobile</th><th>Peso</th></tr></thead>
+              <tbody>
+                <tr><td style="font-size:2rem;font-weight:700;line-height:1.2">Heading XL</td><td>Display</td><td><code>--se-fs-heading-xl</code></td><td>48px (3rem)</td><td>32px (2rem)</td><td>Bold 700</td></tr>
+                <tr><td style="font-size:1.7rem">Heading L</td><td>H1</td><td><code>--se-fs-heading-l</code></td><td>36px (2.25rem)</td><td>24px (1.5rem)</td><td>Regular 400</td></tr>
+                <tr><td style="font-size:1.4rem">Heading M</td><td>H2</td><td><code>--se-fs-heading-m</code></td><td>32px (2rem)</td><td>18px (1.125rem)</td><td>Regular 400</td></tr>
+                <tr><td style="font-size:1.19rem">Heading S</td><td>H3</td><td><code>--se-fs-heading-s</code></td><td>19px (1.1875rem)</td><td>16px (1rem)</td><td>Regular 400</td></tr>
+                <tr><td style="font-weight:700">Heading XS</td><td>H4</td><td><code>--se-fs-heading-xs</code></td><td>16px (1rem)</td><td>14px (0.875rem)</td><td>Regular 400</td></tr>
+                <tr><td>Body-S / <strong>Bold</strong></td><td>Cuerpo</td><td><code>--se-fs-body-s</code></td><td>16px</td><td>14px</td><td>400 / 700</td></tr>
+                <tr><td style="font-size:.875rem">Body-XS / <strong>Bold</strong></td><td>Apoyo</td><td><code>--se-fs-body-xs</code></td><td>14px</td><td>12px</td><td>400 / 700</td></tr>
+                <tr><td><strong>Body-button</strong></td><td>Botón</td><td><code>--se-fs-button</code></td><td>16px</td><td>16px</td><td>400 / 700</td></tr>
+                <tr><td style="font-size:.875rem"><strong>Body-button-small</strong></td><td>Botón sm</td><td><code>--se-fs-button-small</code></td><td>14px</td><td>14px</td><td>400 / 700</td></tr>
+                <tr><td><a class="se-link" href="#tipografia-escala">Body-Link</a></td><td>Enlace</td><td><code>--se-fs-link</code></td><td>16px</td><td>16px</td><td>400 / 700</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 2.6: TOKENS DE EFECTOS
+           ==================================================================== -->
+      <section id="tokens-efectos" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-layers"></i> Tokens / Efectos: Elevación, Bordes, Radios, Espaciado y Movimiento</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('effects-code')"><i class="bi bi-clipboard"></i> Copiar tokens</button>
+        </div>
+        <p class="doc-section-desc">Tokens del estándar institucional Supereduc, alineados con el Kit Digital de Gobierno para asegurar consistencia, accesibilidad y una implementación común entre plataformas.</p>
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <div class="doc-grid-2">
+              <div>
+                <h4 style="margin:0;color:#0F69C4">Elevación</h4>
+                <div class="doc-token-row">
+                  <div class="doc-token-box" style="box-shadow:var(--se-elevation-01);border-radius:4px">01</div>
+                  <div class="doc-token-box" style="box-shadow:var(--se-elevation-02);border-radius:4px">02</div>
+                  <div class="doc-token-box" style="box-shadow:var(--se-elevation-03);border-radius:4px">03</div>
+                </div>
+                <p style="font-size:.82rem;color:#64748b">01: tarjetas en reposo · 02: dropdowns, hover de tarjetas · 03: modales, menú off-canvas.</p>
+              </div>
+              <div>
+                <h4 style="margin:0;color:#0F69C4">Bordes</h4>
+                <div class="doc-token-row">
+                  <div class="doc-token-box" style="background:#fff;border:1px solid #ccc">1px</div>
+                  <div class="doc-token-box" style="background:#fff;border:2px solid #ccc">2px</div>
+                  <div class="doc-token-box" style="background:#fff;border:3px solid #ccc">3px</div>
+                </div>
+                <p style="font-size:.82rem;color:#64748b">1px: divisores y tarjetas · 2px: inputs y botón secundario · 3px: acentos de marca, indicadores de acción y foco según su token semántico.</p>
+              </div>
+              <div>
+                <h4 style="margin:0;color:#0F69C4">Border radius</h4>
+                <div class="doc-token-row">
+                  <div class="doc-token-box" style="background:#fff;border:2px solid #ccc;border-radius:0">0px</div>
+                  <div class="doc-token-box" style="background:#fff;border:2px solid #ccc;border-radius:4px">4px</div>
+                  <div class="doc-token-box" style="background:#fff;border:2px solid #ccc;border-radius:8px">8px</div>
+                  <div class="doc-token-box" style="background:#fff;border:2px solid #ccc;border-radius:16px">16px</div>
+                </div>
+                <p style="font-size:.82rem;color:#64748b">0: ClaveÚnica (variante oficial) · 4: botones, inputs · 8: tarjetas, modales · 16: contenedores destacados.</p>
+              </div>
+              <div>
+                <h4 style="margin:0;color:#0F69C4">Movimiento (hover / roll-over)</h4>
+                <table class="doc-table" style="margin-top:10px">
+                  <tr><th>Token</th><th>Valor</th><th>Uso</th></tr>
+                  <tr><td><code>--se-duration-fast</code></td><td>120ms</td><td>Color de links, foco</td></tr>
+                  <tr><td><code>--se-duration-base</code></td><td>200ms</td><td>Hover de botones y tarjetas</td></tr>
+                  <tr><td><code>--se-duration-slow</code></td><td>320ms</td><td>Menú lateral, colapsar</td></tr>
+                  <tr><td><code>--se-easing</code></td><td colspan="2">cubic-bezier(0.2, 0, 0, 1)</td></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="doc-code-pane" style="display:block">
+            <pre><code id="effects-code">:root {
+  /* Elevación */
+  --se-elevation-01: 0 1px 3px rgba(0,0,0,.16);
+  --se-elevation-02: 0 3px 8px rgba(0,0,0,.18);
+  --se-elevation-03: 0 8px 20px rgba(0,0,0,.22);
+  /* Bordes */
+  --se-border-1: 1px;  --se-border-2: 2px;  --se-border-3: 3px;
+  /* Radios */
+  --se-radius-0: 0;  --se-radius-4: 4px;  --se-radius-8: 8px;  --se-radius-16: 16px;
+  /* Espaciado (base 4) */
+  --se-space-1: 4px; --se-space-2: 8px; --se-space-3: 12px; --se-space-4: 16px;
+  --se-space-5: 24px; --se-space-6: 32px; --se-space-7: 48px; --se-space-8: 64px;
+  /* Movimiento */
+  --se-duration-fast: 120ms; --se-duration-base: 200ms; --se-duration-slow: 320ms;
+  --se-easing: cubic-bezier(0.2, 0, 0, 1);
+  /* Foco */
+  --se-focus-ring: 0 0 0 3px #FFBE5C;
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 3: ESTADOS DE INTERACCIÓN
+           ==================================================================== -->
+      <section id="estados-interaccion" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-hand-index"></i> Estados de Interacción: Hover · Over · Roll · Focus · Active</h2>
+        </div>
+        <p class="doc-section-desc">
+          <strong>Hover = mouse over = roll-over</strong>: el puntero está sobre el elemento (sólo dispositivos con puntero). <strong>Focus</strong>: el elemento recibe foco por teclado (<code>:focus-visible</code>). <strong>Active</strong>: mientras se presiona (pressed / tap). <strong>Disabled</strong>: no disponible. En móvil no existe hover: la información nunca debe depender de él. Pase el mouse o tabule sobre la columna <em>Default</em> para probar en vivo; las demás columnas muestran el estado fijo.
+        </p>
+        <div class="doc-state-grid" role="table" aria-label="Matriz de estados por componente">
+          <div class="h" role="columnheader">Componente</div><div class="h">Default (interactivo)</div><div class="h">Hover / Roll-over</div><div class="h">Focus</div><div class="h">Active</div><div class="h">Disabled</div>
+
+          <div class="r">Botón primario</div>
+          <div><button class="se-btn se-btn--primary se-btn--sm">Aceptar</button></div>
+          <div><button class="se-btn se-btn--primary se-btn--sm is-hover" tabindex="-1">Aceptar</button></div>
+          <div><button class="se-btn se-btn--primary se-btn--sm is-focus" tabindex="-1">Aceptar</button></div>
+          <div><button class="se-btn se-btn--primary se-btn--sm is-active" tabindex="-1">Aceptar</button></div>
+          <div><button class="se-btn se-btn--primary se-btn--sm" disabled>Aceptar</button></div>
+
+          <div class="r">Botón secundario</div>
+          <div><button class="se-btn se-btn--secondary se-btn--sm">Cancelar</button></div>
+          <div><button class="se-btn se-btn--secondary se-btn--sm is-hover" tabindex="-1">Cancelar</button></div>
+          <div><button class="se-btn se-btn--secondary se-btn--sm is-focus" tabindex="-1">Cancelar</button></div>
+          <div><button class="se-btn se-btn--secondary se-btn--sm is-active" tabindex="-1">Cancelar</button></div>
+          <div><button class="se-btn se-btn--secondary se-btn--sm" disabled>Cancelar</button></div>
+
+          <div class="r">Botón terciario</div>
+          <div><button class="se-btn se-btn--tertiary se-btn--sm">Siguiente <i class="bi bi-chevron-right"></i></button></div>
+          <div><button class="se-btn se-btn--tertiary se-btn--sm is-hover" tabindex="-1">Siguiente <i class="bi bi-chevron-right"></i></button></div>
+          <div><button class="se-btn se-btn--tertiary se-btn--sm is-focus" tabindex="-1" style="box-shadow:var(--se-focus-ring)">Siguiente <i class="bi bi-chevron-right"></i></button></div>
+          <div><button class="se-btn se-btn--tertiary se-btn--sm" tabindex="-1" style="color:#00135A">Siguiente <i class="bi bi-chevron-right"></i></button></div>
+          <div><button class="se-btn se-btn--tertiary se-btn--sm" disabled>Siguiente <i class="bi bi-chevron-right"></i></button></div>
+
+          <div class="r">ClaveÚnica</div>
+          <div><button class="se-btn-cu se-btn-cu--sm"><span class="se-cu-icon"></span>ClaveÚnica</button></div>
+          <div><button class="se-btn-cu se-btn-cu--sm is-hover" tabindex="-1"><span class="se-cu-icon"></span>ClaveÚnica</button></div>
+          <div><button class="se-btn-cu se-btn-cu--sm is-focus" tabindex="-1"><span class="se-cu-icon"></span>ClaveÚnica</button></div>
+          <div><button class="se-btn-cu se-btn-cu--sm is-hover" tabindex="-1"><span class="se-cu-icon"></span>ClaveÚnica</button></div>
+          <div><button class="se-btn-cu se-btn-cu--sm" disabled><span class="se-cu-icon"></span>ClaveÚnica</button></div>
+
+          <div class="r">Enlace</div>
+          <div><a class="se-link" href="#estados-interaccion">Ir a la web</a></div>
+          <div><a class="se-link is-hover" href="#estados-interaccion" tabindex="-1">Ir a la web</a></div>
+          <div><a class="se-link is-focus" href="#estados-interaccion" tabindex="-1">Ir a la web</a></div>
+          <div><a class="se-link" href="#estados-interaccion" tabindex="-1" style="color:#00135A">Ir a la web</a></div>
+          <div><span style="color:#666">Ir a la web (texto plano)</span></div>
+
+          <div class="r">Campo de texto</div>
+          <div><input class="se-input" placeholder="RUT" aria-label="Ejemplo default"></div>
+          <div><input class="se-input is-hover" placeholder="RUT" tabindex="-1" aria-label="Ejemplo hover"></div>
+          <div><input class="se-input is-focus" placeholder="RUT" tabindex="-1" aria-label="Ejemplo focus"></div>
+          <div><input class="se-input is-error" placeholder="Error" tabindex="-1" aria-label="Ejemplo error"></div>
+          <div><input class="se-input" placeholder="RUT" disabled aria-label="Ejemplo deshabilitado"></div>
+
+          <div class="r">Ítem menú lateral</div>
+          <div style="padding:6px"><a class="se-sidenav__link" href="#estados-interaccion"><i class="bi bi-house"></i> Inicio</a></div>
+          <div style="padding:6px"><a class="se-sidenav__link is-hover" href="#estados-interaccion" tabindex="-1"><i class="bi bi-house"></i> Inicio</a></div>
+          <div style="padding:6px"><a class="se-sidenav__link" href="#estados-interaccion" tabindex="-1" style="box-shadow:inset 0 0 0 3px #FFBE5C"><i class="bi bi-house"></i> Inicio</a></div>
+          <div style="padding:6px"><a class="se-sidenav__link" aria-current="page" href="#estados-interaccion" tabindex="-1"><i class="bi bi-house"></i> Inicio</a></div>
+          <div style="padding:6px"><a class="se-sidenav__link" aria-disabled="true" tabindex="-1"><i class="bi bi-house"></i> Inicio</a></div>
+        </div>
+
+        <div class="doc-component-card" style="margin-top:22px;">
+          <div class="doc-preview-pane">
+            <table class="doc-table">
+              <caption>Especificación de cada estado (aplicación en CSS)</caption>
+              <thead><tr><th>Componente</th><th>Hover / Roll-over</th><th>Focus (teclado)</th><th>Active (pressed)</th><th>Disabled</th></tr></thead>
+              <tbody>
+                <tr><td>Botón primario</td><td>Fondo #0F69C4 → #003B8D, 200ms</td><td>Anillo 3px #FFBE5C</td><td>Fondo #00135A + desplazamiento 1px</td><td>Fondo #E6E6E6, texto #666, <code>cursor:not-allowed</code></td></tr>
+                <tr><td>Botón secundario</td><td>Fondo #E7F0FA, borde/texto #003B8D</td><td>Anillo 3px #FFBE5C</td><td>Fondo #003B8D, texto blanco</td><td>Igual a primario disabled</td></tr>
+                <tr><td>Botón terciario</td><td>Subrayado + texto #003B8D</td><td>Anillo 3px #FFBE5C</td><td>Texto #00135A</td><td>Texto #666</td></tr>
+                <tr><td>ClaveÚnica</td><td>Fondo #0F69C4 → #0B457F</td><td>Anillo 4px #FFBE5C</td><td>= hover</td><td>Fondo #A8BEDD</td></tr>
+                <tr><td>Enlace</td><td>Subrayado 1px → 3px, texto #003B8D</td><td>Fondo #FFBE5C, texto #373737, línea inferior</td><td>Texto #00135A</td><td>No aplica: usar texto plano</td></tr>
+                <tr><td>Input</td><td>Borde #666 → #0F69C4</td><td>Borde #0F69C4 + anillo #FFBE5C</td><td>—</td><td>Fondo #E6E6E6</td></tr>
+                <tr><td>Tarjeta interactiva</td><td>Elevación 01 → 03, <code>translateY(-2px)</code>, borde acción</td><td><code>:focus-within</code> con anillo</td><td>Vuelve a elevación 01</td><td>Opacidad .6, sin elevación</td></tr>
+                <tr><td>Ítem menú lateral</td><td>Fondo #E7F0FA, texto e ícono #003B8D</td><td>Anillo interior 3px #FFBE5C</td><td>Activo (página actual): fondo #EDF0F5, borde izq. 4px #0F69C4, texto #25306B bold</td><td>Texto #666, sin puntero</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 4: HEADER INSTITUCIONAL SEPARADO POR PARTES
+           ==================================================================== -->
+      <section id="modulo-header" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-layout-text-window-reverse"></i> Módulo Header Institucional (Separado por Partes)</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('header-full-code')"><i class="bi bi-clipboard"></i> Copiar Header Completo</button>
+        </div>
+        <p class="doc-section-desc">
+          El Header institucional se ubica en <code>components/header.html</code> y se compone de 4 partes modulares perfectamente delimitadas para que TI pueda incorporar todo el conjunto o los submódulos específicos según requiera la aplicación.
+        </p>
+
+        <div class="doc-gob-guideline">
+          <strong><i class="bi bi-check-circle"></i> Directrices de Gobierno Digital para Cabeceras:</strong>
+          <ul>
+            <li>El Header debe usar la etiqueta semántica <code>&lt;header role="banner"&gt;</code>.</li>
+            <li>El logo institucional debe enlazar al inicio del portal y tener texto alternativo completo (<code>alt="Superintendencia de Educación..."</code>).</li>
+            <li>En dispositivos móviles, la navegación debe colapsarse en un botón hamburguesa con atributos <code>aria-expanded</code> y <code>aria-controls</code>.</li>
+            <li>La navegación autenticada debe incluir una miga de pan (<code>&lt;nav class="breadcrumb" aria-label="Ruta"&gt;</code>) y acceso claro al perfil y cierre de sesión seguro.</li>
+          </ul>
+        </div>
+
+        <!-- Visual Preview del Header -->
+        <div class="doc-component-card">
+          <div class="doc-component-header">
+            <h4 class="doc-component-name">Vista Previa en Vivo: Header Institucional</h4>
+            <div class="doc-component-controls">
+              <button class="doc-btn-tab active" onclick="switchTab(this, 'header-preview-view', 'header-code-view')">Vista Previa</button>
+              <button class="doc-btn-tab" onclick="switchTab(this, 'header-code-view', 'header-preview-view')">Código HTML</button>
+            </div>
+          </div>
+          
+          <div id="header-preview-view" class="doc-preview-pane" style="padding: 0;">
+            <!-- Simulación del Header -->
+            <header class="main-header" style="box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+              
+              <!-- Parte 1: Banner -->
+              <div class="top-banner">
+                <a href="index.html" style="display:block; text-decoration:none;">
+                  <img src="img/banner-sie.webp" alt="Supereduc | Superintendencia de Educación" class="banner-img" style="max-height: 220px;" onerror="this.src='https://www.supereduc.cl/wp-content/uploads/2026/08/banner-sie.png'">
+                </a>
+              </div>
+
+              <!-- Parte 2: Botón Móvil -->
+              <button type="button" class="main-nav-toggle" style="display: none;">
+                <span class="main-nav-toggle-icon">&#9776;</span>
+                <span class="main-nav-toggle-label">Menú institucional</span>
+              </button>
+
+              <!-- Parte 3: Menú Público -->
+              <nav class="public-nav" style="display: flex;">
+                <a href="https://www.supereduc.cl/competencias-supereduc/" class="nav-tab active" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-shield-check"></i> Nuestras Competencias
+                </a>
+                <a href="https://www.supereduc.cl/normativa/" class="nav-tab" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-people"></i> Normativa
+                </a>
+                <a href="https://www.supereduc.cl/contenidos-de-interes/" class="nav-tab" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-file-earmark-text"></i> Contenidos de Interés
+                </a>
+                <a href="https://www.supereduc.cl/contacto/" class="nav-tab" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-clock-history"></i> Contacto
+                </a>
+              </nav>
+
+              <!-- Parte 4: Barra de Usuario Logueado (Muestra) -->
+              <nav class="user-nav" style="display: block; border-top: 2px solid var(--borde);">
+                <div class="user-nav-container">
+                  <div class="breadcrumb">
+                    <a href="index.html">Inicio</a>
+                    <span class="separator">&gt;</span>
+                    <span class="current-page">Contenidos de Interés</span>
+                  </div>
+                  <div class="user-actions">
+                    <div class="user-profile">
+                      <div class="user-icon"><i class="bi bi-person-fill"></i></div>
+                      <span class="user-name">Juan Pérez (12.345.678-9)</span>
+                    </div>
+                    <div class="user-buttons">
+                      <button type="button" class="btn-user active-page-btn"><i class="bi bi-house-door-fill"></i> Inicio</button>
+                      <button type="button" class="btn-user"><i class="bi bi-bell-fill"></i> Notificaciones</button>
+                      <button type="button" class="btn-user"><i class="bi bi-person-lines-fill"></i> Actualizar datos</button>
+                      <button type="button" class="btn-user btn-logout"><i class="bi bi-power"></i> Cerrar sesión</button>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+
+            </header>
+          </div>
+
+          <div id="header-code-view" class="doc-code-pane">
+            <button class="doc-btn-copy" style="position: absolute; right: 20px; top: 15px;" onclick="copyComponentCode('header-full-code')">Copiar</button>
+            <pre><code id="header-full-code">&lt;!-- ==========================================================================
+   SUPERINTENDENCIA DE EDUCACIÓN — GOBIERNO DE CHILE
+   COMPONENTE: HEADER INSTITUCIONAL MODULAR
+   Estándar de Sitios Web del Estado: https://framework.digital.gob.cl/
+   ========================================================================== --&gt;
+&lt;header class="main-header" role="banner"&gt;
+
+  &lt;!-- PARTE 1: BANNER E IDENTIDAD INSTITUCIONAL --&gt;
+  &lt;div class="top-banner"&gt;
+    &lt;a href="index.html" class="banner-link" title="Ir al inicio - Supereduc | Superintendencia de Educación"&gt;
+      &lt;img
+        id="bannerImage"
+        src="img/banner-sie.webp"
+        alt="Supereduc | Superintendencia de Educación"
+        class="banner-img"
+        onerror="this.style.display='none'; document.getElementById('bannerFallback').style.display='flex';"
+      /&gt;
+    &lt;/a&gt;
+    &lt;div id="bannerFallback" class="banner-fallback" style="display: none;" role="region" aria-label="Identidad Institucional"&gt;
+      &lt;div class="fallback-content"&gt;
+        &lt;span class="inst-label"&gt;Supereduc | Superintendencia de Educación &bull; Gobierno de Chile&lt;/span&gt;
+        &lt;h1 class="inst-title"&gt;Supereduc | Superintendencia de Educación&lt;/h1&gt;
+        &lt;p class="inst-sub"&gt;Ley N.° 20.529 — Aseguramiento de la Calidad de la Educación&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="fallback-bar" aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- PARTE 2: BOTÓN DE MENÚ RESPONSIVE (MÓVIL) --&gt;
+  &lt;button
+    type="button"
+    class="main-nav-toggle"
+    id="mainNavToggle"
+    aria-expanded="false"
+    aria-controls="publicNav"
+    aria-label="Abrir o cerrar menú de navegación principal"&gt;
+    &lt;span class="main-nav-toggle-icon" aria-hidden="true"&gt;&amp;#9776;&lt;/span&gt;
+    &lt;span class="main-nav-toggle-label"&gt;Menú institucional&lt;/span&gt;
+  &lt;/button&gt;
+
+  &lt;!-- PARTE 3: NAVEGACIÓN PÚBLICA (USUARIOS NO AUTENTICADOS) --&gt;
+  &lt;nav class="public-nav" id="publicNav" role="navigation" aria-label="Navegación pública institucional"&gt;
+    &lt;a href="https://www.supereduc.cl/competencias-supereduc/" class="nav-tab active" target="_blank" rel="noopener noreferrer"&gt;
+      &lt;i class="bi bi-shield-check" aria-hidden="true"&gt;&lt;/i&gt; Nuestras Competencias
+    &lt;/a&gt;
+    &lt;a href="https://www.supereduc.cl/normativa/" class="nav-tab" target="_blank" rel="noopener noreferrer"&gt;
+      &lt;i class="bi bi-people" aria-hidden="true"&gt;&lt;/i&gt; Normativa
+    &lt;/a&gt;
+    &lt;a href="https://www.supereduc.cl/contenidos-de-interes/" class="nav-tab" target="_blank" rel="noopener noreferrer"&gt;
+      &lt;i class="bi bi-file-earmark-text" aria-hidden="true"&gt;&lt;/i&gt; Contenidos de Interés
+    &lt;/a&gt;
+    &lt;a href="https://www.supereduc.cl/contacto/" class="nav-tab" target="_blank" rel="noopener noreferrer"&gt;
+      &lt;i class="bi bi-clock-history" aria-hidden="true"&gt;&lt;/i&gt; Contacto
+    &lt;/a&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- PARTE 4: NAVEGACIÓN PRIVADA / AUTENTICADA (USUARIOS LOGUEADOS) --&gt;
+  &lt;nav class="user-nav" id="userNav" style="display: none;" role="navigation" aria-label="Barra de usuario autenticado"&gt;
+    &lt;div class="user-nav-container"&gt;
+      &lt;nav class="breadcrumb" aria-label="Ruta de navegación"&gt;
+        &lt;a href="index.html" data-route="index.html"&gt;Inicio&lt;/a&gt;
+        &lt;span class="separator" aria-hidden="true"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="current-page" id="currentPage" aria-current="page"&gt;Panel Principal&lt;/span&gt;
+      &lt;/nav&gt;
+      &lt;div class="user-actions"&gt;
+        &lt;div class="user-profile"&gt;
+          &lt;div class="user-icon" aria-hidden="true"&gt;&lt;i class="bi bi-person-fill"&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;span class="user-name" id="userName"&gt;Usuario&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="user-buttons" role="group" aria-label="Acciones de sesión"&gt;
+          &lt;button type="button" class="btn-user" data-route="pages/dashboard.html"&gt;&lt;i class="bi bi-house-door-fill"&gt;&lt;/i&gt; Inicio&lt;/button&gt;
+          &lt;button type="button" class="btn-user" data-route="pages/notificaciones.html"&gt;&lt;i class="bi bi-bell-fill"&gt;&lt;/i&gt; Notificaciones&lt;/button&gt;
+          &lt;button type="button" class="btn-user" data-route="pages/actualizar-datos.html"&gt;&lt;i class="bi bi-person-lines-fill"&gt;&lt;/i&gt; Actualizar datos&lt;/button&gt;
+          &lt;button type="button" class="btn-user btn-logout" id="btnLogout"&gt;&lt;i class="bi bi-power"&gt;&lt;/i&gt; Cerrar sesión&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+          </div>
+        </div>
+
+        <!-- Desglose didáctico de las partes del Header -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px;">
+          <div style="background:#fff; border:1px solid var(--doc-border); border-radius:8px; padding:16px;">
+            <span class="doc-part-badge">Parte 1: Banner e Identidad</span>
+            <p style="font-size: 0.85rem; color: var(--doc-text-muted); margin: 0;">
+              Integra el branding visual de la Supereduc con un <code>onerror</code> dinámico que levanta un fallback SVG accesible con gradiente y tipografía legible en caso de pérdida de conexión.
+            </p>
+          </div>
+          <div style="background:#fff; border:1px solid var(--doc-border); border-radius:8px; padding:16px;">
+            <span class="doc-part-badge">Parte 2: Botón Móvil Accesible</span>
+            <p style="font-size: 0.85rem; color: var(--doc-text-muted); margin: 0;">
+              Controla el despliegue del menú en teléfonos móviles mediante <code>aria-expanded</code> sincronizado por <code>components.js</code>.
+            </p>
+          </div>
+          <div style="background:#fff; border:1px solid var(--doc-border); border-radius:8px; padding:16px;">
+            <span class="doc-part-badge">Parte 3: Navegación Pública</span>
+            <p style="font-size: 0.85rem; color: var(--doc-text-muted); margin: 0;">
+              Enlaces prioritarios hacia las competencias institucionales, normativa, contenidos de interés y contacto de supereduc.cl.
+            </p>
+          </div>
+          <div style="background:#fff; border:1px solid var(--doc-border); border-radius:8px; padding:16px;">
+            <span class="doc-part-badge">Parte 4: Navegación Autenticada</span>
+            <p style="font-size: 0.85rem; color: var(--doc-text-muted); margin: 0;">
+              Se activa tras el login (RUT o ClaveÚnica). Muestra el usuario activo, breadcrumb de ubicación y accesos rápidos a trámites y logout.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 5: FOOTER GUBERNAMENTAL SEPARADO POR PARTES
+           ==================================================================== -->
+      <section id="modulo-footer" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-layout-text-window"></i> Módulo Footer Gubernamental (Separado por Partes)</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('footer-full-code')"><i class="bi bi-clipboard"></i> Copiar Footer Completo</button>
+        </div>
+        <p class="doc-section-desc">
+          El Footer institucional reside en <code>components/footer.html</code>. Contiene la estructura obligatoria para organismos del Estado: Transparencia Activa, canales de atención, redes sociales y franja tricolor oficial.
+        </p>
+
+        <!-- Visual Preview del Footer -->
+        <div class="doc-component-card">
+          <div class="doc-component-header">
+            <h4 class="doc-component-name">Vista Previa en Vivo: Footer Gubernamental</h4>
+            <div class="doc-component-controls">
+              <button class="doc-btn-tab active" onclick="switchTab(this, 'footer-preview-view', 'footer-code-view')">Vista Previa</button>
+              <button class="doc-btn-tab" onclick="switchTab(this, 'footer-code-view', 'footer-preview-view')">Código HTML</button>
+            </div>
+          </div>
+          
+          <div id="footer-preview-view" class="doc-preview-pane" style="padding: 0; background: #0a2240;">
+            <!-- Simulación del Footer -->
+            <footer class="main-footer" style="margin-top: 0;">
+              <!-- Parte 1: Banners de Transparencia -->
+              <div class="footer-institutional-banners">
+                <a href="https://transparencia.supereduc.cl/iris_gplus/Transparencia/index_minisitio.jsp?id=11" target="_blank" rel="noopener noreferrer" class="footer-institutional-banner">
+                  <span></span><strong>Solicitud de información<br>Ley de Transparencia</strong>
+                </a>
+                <a href="https://transparencia.supereduc.cl/IRIS_FILES/_T.ACTIVA/3025/28-12-2018-12-24-11.078754999999999.html" target="_blank" rel="noopener noreferrer" class="footer-institutional-banner">
+                  <span></span><strong>Compromisos de<br>Gestión Institucional</strong>
+                </a>
+                <a href="https://www.supereduc.cl/registro-de-tramites-digitales/" target="_blank" rel="noopener noreferrer" class="footer-institutional-banner">
+                  <span></span><strong>Gobierno<br>Transparente</strong>
+                </a>
+              </div>
+
+              <!-- Parte 2: Grid Institucional -->
+              <div class="footer-content">
+                <div class="footer-section">
+                  <img class="footer-logo" src="img/logo-supereduc-rojo.svg" alt="Supereduc | Superintendencia de Educación">
+                  <p class="footer-institution"><strong>Supereduc | Superintendencia de Educación</strong><br>Ministerio de Educación<br>Gobierno de Chile</p>
+                  <h5>Enlaces Rápidos</h5>
+                  <ul>
+                    <li><a href="https://www.supereduc.cl/consultas/" target="_blank" rel="noopener noreferrer">Preguntas frecuentes</a></li>
+                    <li><a href="pages/mapa-del-sitio.html">Mapa del Sitio</a></li>
+                    <li><a href="https://www.supereduc.cl/politicas-privacidad/" target="_blank" rel="noopener noreferrer">Políticas de privacidad</a></li>
+                  </ul>
+                </div>
+                <div class="footer-section">
+                  <h5>Contacto</h5>
+                  <p><i class="bi bi-telephone"></i> 600 3600 390</p>
+                  <p><i class="bi bi-clock"></i> Lunes a Viernes 09:00 - 13:00</p>
+                  <a class="footer-contact-link" href="https://www.supereduc.cl/contacto/" target="_blank" rel="noopener noreferrer"><i class="bi bi-envelope"></i> Contacto supereduc.cl</a>
+                  <div class="social-links" style="margin-top: 15px;">
+                    <a href="https://www.facebook.com/supereducCL/timeline" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://x.com/supereduc_cl" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCWzV9xpJrHWpB-VT2mx9HKg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="https://www.instagram.com/supereduc_cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                  </div>
+                </div>
+                <div class="footer-section">
+                  <h5>Sitios Relacionados</h5>
+                  <ul>
+                    <li><a href="https://www.ayudamineduc.cl/" target="_blank" rel="noopener noreferrer">Ayuda Mineduc</a></li>
+                    <li><a href="https://junji.cl/" target="_blank" rel="noopener noreferrer">JUNJI</a></li>
+                    <li><a href="https://integra.cl/" target="_blank" rel="noopener noreferrer">Integra</a></li>
+                    <li><a href="https://www.agenciaeducacion.cl/" target="_blank" rel="noopener noreferrer">Agencia de Calidad</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Parte 3: Llamado de contacto -->
+              <a class="footer-contact-callout" href="mailto:jaime.galleguillos@supereduc.cl">
+                Si necesitas contactarte con la administración o soporte técnico de este sitio, haz clic aquí
+              </a>
+
+              <!-- Parte 4: Copyright -->
+              <div class="footer-bottom">
+                <p>&copy; 2026 Supereduc | Superintendencia de Educación &bull; Gobierno de Chile</p>
+              </div>
+
+              <!-- Parte 5: Franja Tricolor -->
+              <img class="footer-tricolor-star" src="img/tricolor estrella.webp" alt="Franja tricolor del Gobierno de Chile" onerror="this.style.background='linear-gradient(90deg, #006fb3 50%, #c4273c 50%)'; this.style.height='8px';">
+            </footer>
+          </div>
+
+          <div id="footer-code-view" class="doc-code-pane">
+            <button class="doc-btn-copy" style="position: absolute; right: 20px; top: 15px;" onclick="copyComponentCode('footer-full-code')">Copiar</button>
+            <pre><code id="footer-full-code">&lt;!-- ==========================================================================
+   SUPERINTENDENCIA DE EDUCACIÓN — GOBIERNO DE CHILE
+   COMPONENTE: FOOTER GUBERNAMENTAL MODULAR
+   Estándar de Sitios Web del Estado: https://framework.digital.gob.cl/
+   ========================================================================== --&gt;
+&lt;footer class="main-footer" role="contentinfo"&gt;
+
+  &lt;!-- PARTE 1: BANNERS INSTITUCIONALES Y DE TRANSPARENCIA --&gt;
+  &lt;div class="footer-institutional-banners" aria-label="Portales de Transparencia"&gt;
+    &lt;a href="https://transparencia.supereduc.cl/..." target="_blank" rel="noopener noreferrer" class="footer-institutional-banner"&gt;
+      &lt;span class="banner-badge" aria-hidden="true"&gt;&lt;/span&gt;
+      &lt;strong&gt;Solicitud de información&lt;br&gt;Ley de Transparencia&lt;/strong&gt;
+    &lt;/a&gt;
+    &lt;a href="https://transparencia.supereduc.cl/..." target="_blank" rel="noopener noreferrer" class="footer-institutional-banner"&gt;
+      &lt;span class="banner-badge" aria-hidden="true"&gt;&lt;/span&gt;
+      &lt;strong&gt;Compromisos de&lt;br&gt;Gestión Institucional&lt;/strong&gt;
+    &lt;/a&gt;
+    &lt;a href="https://www.supereduc.cl/registro-de-tramites-digitales/" target="_blank" rel="noopener noreferrer" class="footer-institutional-banner"&gt;
+      &lt;span class="banner-badge" aria-hidden="true"&gt;&lt;/span&gt;
+      &lt;strong&gt;Gobierno&lt;br&gt;Transparente&lt;/strong&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;!-- PARTE 2: CONTENIDO PRINCIPAL DEL FOOTER (GRID INSTITUCIONAL) --&gt;
+  &lt;div class="footer-content"&gt;
+    &lt;!-- 2.1 Identidad y Enlaces Rápidos --&gt;
+    &lt;div class="footer-section footer-col-identity"&gt;
+      &lt;img class="footer-logo" src="img/logo-supereduc-rojo.svg" alt="Supereduc | Superintendencia de Educación" width="146" height="56" loading="lazy"&gt;
+      &lt;p class="footer-institution"&gt;&lt;strong&gt;Supereduc | Superintendencia de Educación&lt;/strong&gt;&lt;br&gt;Ministerio de Educación&lt;br&gt;Gobierno de Chile&lt;/p&gt;
+      &lt;h5&gt;Enlaces Rápidos&lt;/h5&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="https://www.supereduc.cl/consultas/" target="_blank" rel="noopener noreferrer"&gt;Preguntas frecuentes&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="pages/mapa-del-sitio.html"&gt;Mapa del Sitio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://www.supereduc.cl/politicas-privacidad/" target="_blank" rel="noopener noreferrer"&gt;Políticas de privacidad&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 2.2 Canales de Atención y Redes Sociales --&gt;
+    &lt;div class="footer-section footer-col-contact"&gt;
+      &lt;h5&gt;Contacto Supereduc&lt;/h5&gt;
+      &lt;p&gt;&lt;i class="bi bi-telephone" aria-hidden="true"&gt;&lt;/i&gt; 600 3600 390&lt;/p&gt;
+      &lt;p&gt;&lt;i class="bi bi-clock" aria-hidden="true"&gt;&lt;/i&gt; Lunes a Viernes de 09:00 a 13:00 hrs.&lt;/p&gt;
+      &lt;a class="footer-contact-link" href="https://www.supereduc.cl/contacto/" target="_blank" rel="noopener noreferrer"&gt;
+        &lt;i class="bi bi-envelope" aria-hidden="true"&gt;&lt;/i&gt; Contacto supereduc.cl
+      &lt;/a&gt;
+      &lt;div class="social-links" aria-label="Redes sociales oficiales"&gt;
+        &lt;a href="https://www.facebook.com/supereducCL/timeline" target="_blank" rel="noopener noreferrer" aria-label="Facebook"&gt;&lt;i class="bi bi-facebook"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;a href="https://x.com/supereduc_cl" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"&gt;&lt;i class="bi bi-twitter-x"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;a href="https://www.youtube.com/channel/UCWzV9xpJrHWpB-VT2mx9HKg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"&gt;&lt;i class="bi bi-youtube"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;a href="https://www.instagram.com/supereduc_cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"&gt;&lt;i class="bi bi-instagram"&gt;&lt;/i&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 2.3 Ecosistema Educacional --&gt;
+    &lt;div class="footer-section footer-col-related"&gt;
+      &lt;h5&gt;Sitios Relacionados&lt;/h5&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="https://www.ayudamineduc.cl/" target="_blank" rel="noopener noreferrer"&gt;Ayuda Mineduc&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://junji.cl/" target="_blank" rel="noopener noreferrer"&gt;JUNJI&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://integra.cl/" target="_blank" rel="noopener noreferrer"&gt;Integra&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://www.agenciaeducacion.cl/" target="_blank" rel="noopener noreferrer"&gt;Agencia de Calidad&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- PARTE 3: CONTACTO ADMINISTRATIVO / SOPORTE TI --&gt;
+  &lt;a class="footer-contact-callout" href="mailto:jaime.galleguillos@supereduc.cl"&gt;
+    &lt;i class="bi bi-headset" aria-hidden="true"&gt;&lt;/i&gt; Si necesitas contactarte con la administración de este sitio, haz clic aquí
+  &lt;/a&gt;
+
+  &lt;!-- PARTE 4: COPYRIGHT OFICIAL --&gt;
+  &lt;div class="footer-bottom"&gt;
+    &lt;p&gt;&amp;copy; 2026 Supereduc | Superintendencia de Educación &bull; Gobierno de Chile&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;!-- PARTE 5: FRANJA DECORATIVA TRICOLOR --&gt;
+  &lt;img class="footer-tricolor-star" src="img/tricolor estrella.webp" alt="Franja tricolor del Gobierno de Chile" loading="lazy" aria-hidden="true"&gt;
+&lt;/footer&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 6: BOTÓN & MODAL CLAVEÚNICA
+           ==================================================================== -->
+      <section id="modulo-claveunica" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-person-badge"></i> Módulo ClaveÚnica (Estándar Oficial)</h2>
+          <span class="doc-badge-gob">accounts.claveunica.gob.cl</span>
+        </div>
+        <p class="doc-section-desc">
+          Especificación oficial para el botón de autenticación centralizada del Estado de Chile. El diseño del botón ClaveÚnica no debe ser alterado ni en proporción, color, tipografía ni isotipo.
+        </p>
+
+        <div class="doc-gob-guideline">
+          <strong><i class="bi bi-shield-check"></i> Especificaciones Normadas de ClaveÚnica:</strong>
+          <ul>
+            <li><strong>Color de fondo:</strong> Azul institucional <code>#0F69C4</code> con gradiente o sólido según la guía de marca.</li>
+            <li><strong>Isotipo:</strong> Ícono oficial de ClaveÚnica (doble semicírculo rojo/azul o clase <code>cl-claveunica</code>).</li>
+            <li><strong>Tipografía:</strong> Roboto Bold color blanco <code>#FFFFFF</code>.</li>
+            <li><strong>Integración TI (OpenID Connect):</strong> Protocolo estándar OIDC v1.0. Endpoints del Estado:
+              <code>https://accounts.claveunica.gob.cl/openid/authorize</code> y <code>/openid/token</code>.
+            </li>
+          </ul>
+        </div>
+
+        <div class="doc-component-card">
+          <div class="doc-component-header">
+            <h4 class="doc-component-name">Botón Oficial ClaveÚnica y Variantes</h4>
+            <div class="doc-component-controls">
+              <button class="doc-btn-tab active" onclick="switchTab(this, 'cu-preview-view', 'cu-code-view')">Vista Previa</button>
+              <button class="doc-btn-tab" onclick="switchTab(this, 'cu-code-view', 'cu-preview-view')">Código HTML</button>
+            </div>
+          </div>
+          
+          <div id="cu-preview-view" class="doc-preview-pane">
+            <div style="display: flex; flex-direction: column; gap: 20px; max-width: 380px;">
+              
+              <!-- Botón ClaveÚnica Oficial Estándar -->
+              <div>
+                <label style="font-size: 0.85rem; font-weight: 700; color: #475569; display:block; margin-bottom: 6px;">1. Botón Oficial Ancho Completo (Uso en supereduc.cl):</label>
+                <button type="button" class="btn-cu" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(11,69,127,0.25);" onclick="openDemoCuModal()">
+                  <span class="cl-claveunica"></span>
+                  <span class="texto">Iniciar sesión con ClaveÚnica</span>
+                </button>
+              </div>
+
+              <!-- Botón ClaveÚnica Píldora -->
+              <div>
+                <label style="font-size: 0.85rem; font-weight: 700; color: #475569; display:block; margin-bottom: 6px;">2. Variante Píldora (Compacta):</label>
+                <button type="button" class="btn-pill btn-pill--cu" style="width: 100%; justify-content: center;" onclick="openDemoCuModal()">
+                  <span class="cl-claveunica"></span>
+                  <span>Acceso con ClaveÚnica</span>
+                </button>
+              </div>
+
+              <!-- Botón de apertura de Modal Informativo -->
+              <div>
+                <button type="button" class="btn-pill" style="background:#EDF0F5; color:var(--doc-primary); border:1px solid var(--doc-primary); width:100%; justify-content:center; padding:10px;" onclick="openDemoCuModal()">
+                  <i class="bi bi-info-circle"></i> Ver Diálogo Informativo de ClaveÚnica
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div id="cu-code-view" class="doc-code-pane">
+            <button class="doc-btn-copy" style="position: absolute; right: 20px; top: 15px;" onclick="copyComponentCode('cu-code-snippet')">Copiar</button>
+            <pre><code id="cu-code-snippet">&lt;!-- Botón Estándar de ClaveÚnica (framework.digital.gob.cl) --&gt;
+&lt;button type="button" class="btn-cu" id="btnClaveUnica" aria-label="Iniciar sesión con ClaveÚnica del Estado de Chile"&gt;
+  &lt;span class="cl-claveunica" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="texto"&gt;Iniciar sesión con ClaveÚnica&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Estilo CSS Asociado en site.css / landing.css --&gt;
+&lt;style&gt;
+  .btn-cu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #0b457f 0%, #0f69c4 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: filter 0.2s, transform 0.1s;
+  }
+  .btn-cu:hover {
+    filter: brightness(1.08);
+  }
+  .btn-cu:focus-visible {
+    outline: 3px solid #e0701e;
+    outline-offset: 3px;
+  }
+&lt;/style&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 4.4: MENÚ LATERAL COMO COMPONENTE
+           ==================================================================== -->
+      <section id="menu-lateral" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-layout-sidebar"></i> Componente Menú Lateral (Sidenav)</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('sidenav-code')"><i class="bi bi-clipboard"></i> Copiar componente</button>
+        </div>
+        <p class="doc-section-desc">
+          Menú de navegación vertical para intranets, paneles de fiscalización y sistemas internos de Supereduc. Soporta grupos, submenús desplegables, ítem activo (<code>aria-current="page"</code>), badge de notificaciones, modo colapsado (sólo iconos) y off-canvas en móvil con overlay y cierre con <kbd>Esc</kbd>.
+        </p>
+        <div class="doc-gob-guideline">
+          <strong><i class="bi bi-check-circle"></i> Reglas de uso</strong>
+          <ul style="margin:8px 0 0 20px;padding:0">
+            <li>Usar cuando la aplicación tiene <strong>más de 5 secciones</strong> o 2 niveles de navegación. Para sitios públicos usar la navegación horizontal del Header.</li>
+            <li>Máximo <strong>2 niveles</strong> de profundidad. Etiquetas cortas (1–3 palabras) con ícono.</li>
+            <li>El ítem activo usa <code>--se-color-action</code> (<strong>azul #0F69C4, N2</strong>) como indicador lateral; el hover utiliza el mismo color de acción en modo sutil. El rojo de marca se reserva para acentos de identidad.</li>
+            <li>Los submenús se abren con <code>&lt;button aria-expanded&gt;</code>, nunca con un enlace vacío <code>href="#"</code>.</li>
+          </ul>
+        </div>
+
+        <div class="doc-component-card">
+          <div class="doc-component-header">
+            <h4 class="doc-component-name">Vista Previa Interactiva</h4>
+            <div class="doc-component-controls">
+              <button class="doc-btn-tab active" onclick="switchTab(this, 'sidenav-preview', 'sidenav-code-view')">Vista Previa</button>
+              <button class="doc-btn-tab" onclick="switchTab(this, 'sidenav-code-view', 'sidenav-preview')">Código HTML + JS</button>
+            </div>
+          </div>
+          <div id="sidenav-preview" class="doc-preview-pane" style="padding:16px">
+            <div class="doc-sidenav-stage">
+              <aside class="se-sidenav" id="demoSidenav" aria-label="Menú lateral de la aplicación">
+                <div class="se-sidenav__head">
+                  <span class="se-sidenav__title">Supereduc · Intranet</span>
+                  <button type="button" class="se-btn se-btn--icon se-btn--sm" data-sidenav-collapse aria-label="Colapsar menú" aria-pressed="false"><i class="bi bi-chevron-double-left"></i></button>
+                </div>
+                <div class="se-sidenav__group-label">General</div>
+                <ul class="se-sidenav__list">
+                  <li><a class="se-sidenav__link" href="#menu-lateral" aria-current="page" title="Inicio"><i class="bi bi-house-door"></i><span class="se-sidenav__label">Inicio</span></a></li>
+                  <li><a class="se-sidenav__link" href="#menu-lateral" title="Notificaciones"><i class="bi bi-bell"></i><span class="se-sidenav__label">Notificaciones</span><span class="se-sidenav__badge">3</span></a></li>
+                  <li>
+                    <button type="button" class="se-sidenav__toggle" aria-expanded="true" aria-controls="sub-fisc" title="Fiscalización"><i class="bi bi-clipboard-check"></i><span class="se-sidenav__label">Fiscalización</span><i class="bi bi-chevron-down se-sidenav__chevron"></i></button>
+                    <ul class="se-sidenav__sub" id="sub-fisc">
+                      <li><a class="se-sidenav__link" href="#menu-lateral">Programación</a></li>
+                      <li><a class="se-sidenav__link" href="#menu-lateral">Actas</a></li>
+                      <li><a class="se-sidenav__link" href="#menu-lateral">Procesos sancionatorios</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button type="button" class="se-sidenav__toggle" aria-expanded="false" aria-controls="sub-norm" title="Normativa"><i class="bi bi-journal-text"></i><span class="se-sidenav__label">Normativa</span><i class="bi bi-chevron-down se-sidenav__chevron"></i></button>
+                    <ul class="se-sidenav__sub" id="sub-norm">
+                      <li><a class="se-sidenav__link" href="#menu-lateral">Circulares</a></li>
+                      <li><a class="se-sidenav__link" href="#menu-lateral">Dictámenes</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <div class="se-sidenav__group-label">Gestión</div>
+                <ul class="se-sidenav__list">
+                  <li><a class="se-sidenav__link" href="#menu-lateral" title="Reportes"><i class="bi bi-bar-chart"></i><span class="se-sidenav__label">Reportes</span></a></li>
+                  <li><a class="se-sidenav__link" aria-disabled="true" title="Configuración (sin permisos)"><i class="bi bi-gear"></i><span class="se-sidenav__label">Configuración</span></a></li>
+                </ul>
+                <div class="se-sidenav__foot">
+                  <a class="se-sidenav__link" href="#menu-lateral" title="Cerrar sesión"><i class="bi bi-power"></i><span class="se-sidenav__label">Cerrar sesión</span></a>
+                </div>
+              </aside>
+              <main>
+                <h3 style="margin-top:0;color:#25306B">Contenido de la aplicación</h3>
+                <p style="color:#666;max-width:520px">Pruebe: hover sobre los ítems, navegación con <kbd>Tab</kbd>, abrir/cerrar submenús, clic en un ítem para marcarlo activo y el botón de colapsar.</p>
+              </main>
+            </div>
+          </div>
+          <div id="sidenav-code-view" class="doc-code-pane">
+            <button class="doc-btn-copy" style="position:absolute;right:20px;top:15px" onclick="copyComponentCode('sidenav-code')">Copiar</button>
+            <pre><code id="sidenav-code">&lt;!-- Requiere: css/tokens.css + Bootstrap Icons --&gt;
+&lt;button type="button" class="se-btn se-btn--secondary se-btn--sm" data-sidenav-open
+        aria-controls="appSidenav" aria-expanded="false"&gt;&lt;i class="bi bi-list"&gt;&lt;/i&gt; Menú&lt;/button&gt;
+
+&lt;aside class="se-sidenav se-sidenav--offcanvas" id="appSidenav" aria-label="Menú lateral"&gt;
+  &lt;div class="se-sidenav__head"&gt;
+    &lt;span class="se-sidenav__title"&gt;Supereduc · Intranet&lt;/span&gt;
+    &lt;button type="button" class="se-btn se-btn--icon se-btn--sm" data-sidenav-collapse
+            aria-label="Colapsar menú" aria-pressed="false"&gt;&lt;i class="bi bi-chevron-double-left"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="se-sidenav__group-label"&gt;General&lt;/div&gt;
+  &lt;ul class="se-sidenav__list"&gt;
+    &lt;li&gt;&lt;a class="se-sidenav__link" href="/inicio" aria-current="page"&gt;
+      &lt;i class="bi bi-house-door" aria-hidden="true"&gt;&lt;/i&gt;&lt;span class="se-sidenav__label"&gt;Inicio&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="se-sidenav__link" href="/notificaciones"&gt;
+      &lt;i class="bi bi-bell" aria-hidden="true"&gt;&lt;/i&gt;&lt;span class="se-sidenav__label"&gt;Notificaciones&lt;/span&gt;
+      &lt;span class="se-sidenav__badge"&gt;3&lt;span class="sr-only"&gt; nuevas&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+      &lt;button type="button" class="se-sidenav__toggle" aria-expanded="false" aria-controls="sub-fisc"&gt;
+        &lt;i class="bi bi-clipboard-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;span class="se-sidenav__label"&gt;Fiscalización&lt;/span&gt;
+        &lt;i class="bi bi-chevron-down se-sidenav__chevron" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;ul class="se-sidenav__sub" id="sub-fisc"&gt;
+        &lt;li&gt;&lt;a class="se-sidenav__link" href="/fiscalizacion/programacion"&gt;Programación&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="se-sidenav__link" href="/fiscalizacion/actas"&gt;Actas&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="se-sidenav__foot"&gt;
+    &lt;a class="se-sidenav__link" href="/logout"&gt;&lt;i class="bi bi-power" aria-hidden="true"&gt;&lt;/i&gt;&lt;span class="se-sidenav__label"&gt;Cerrar sesión&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;
+&lt;div class="se-sidenav-overlay" data-sidenav-overlay&gt;&lt;/div&gt;
+
+&lt;script&gt;
+/* Supereduc Sidenav — sin dependencias */
+function initSidenav(nav) {
+  // Submenús
+  nav.querySelectorAll('.se-sidenav__toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') !== 'true');
+    });
+  });
+  // Colapsar (sólo iconos)
+  var col = nav.querySelector('[data-sidenav-collapse]');
+  if (col) col.addEventListener('click', function () {
+    var c = nav.classList.toggle('is-collapsed');
+    col.setAttribute('aria-pressed', c);
+    col.setAttribute('aria-label', c ? 'Expandir menú' : 'Colapsar menú');
+  });
+  // Off-canvas móvil
+  var openBtn = document.querySelector('[data-sidenav-open][aria-controls="' + nav.id + '"]');
+  var overlay = document.querySelector('[data-sidenav-overlay]');
+  function setOpen(o) {
+    nav.classList.toggle('is-open', o);
+    if (overlay) overlay.classList.toggle('is-open', o);
+    if (openBtn) openBtn.setAttribute('aria-expanded', o);
+    if (o) { var f = nav.querySelector('a,button'); if (f) f.focus(); } else if (openBtn) openBtn.focus();
+  }
+  if (openBtn) openBtn.addEventListener('click', function () { setOpen(true); });
+  if (overlay) overlay.addEventListener('click', function () { setOpen(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' &amp;&amp; nav.classList.contains('is-open')) setOpen(false);
+  });
+}
+document.querySelectorAll('.se-sidenav').forEach(initSidenav);
+&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <table class="doc-table">
+              <caption>Anatomía y tokens del Sidenav</caption>
+              <thead><tr><th>Parte</th><th>Clase</th><th>Tokens</th></tr></thead>
+              <tbody>
+                <tr><td>Contenedor</td><td><code>.se-sidenav</code></td><td><code>--se-sidenav-w</code> 280px · colapsado 72px · borde <code>--se-color-border</code></td></tr>
+                <tr><td>Cabecera</td><td><code>.se-sidenav__head</code></td><td>Borde inferior 3px <code>--se-color-action</code> (azul #0F69C4)</td></tr>
+                <tr><td>Etiqueta de grupo</td><td><code>.se-sidenav__group-label</code></td><td>12px, mayúsculas, <code>--se-color-text-muted</code></td></tr>
+                <tr><td>Ítem / Toggle</td><td><code>.se-sidenav__link</code> / <code>__toggle</code></td><td>min-height 44px · hover <code>--se-color-action-subtle</code> · foco <code>--se-color-focus</code></td></tr>
+                <tr><td>Ítem activo</td><td><code>[aria-current="page"]</code></td><td>Fondo <code>--se-brand-azul-50</code>, borde 4px <code>--se-color-action</code> (azul #0F69C4), texto <code>--se-color-brand</code></td></tr>
+                <tr><td>Submenú</td><td><code>.se-sidenav__sub</code></td><td>Indentado 28px; se muestra con <code>aria-expanded="true"</code></td></tr>
+                <tr><td>Badge</td><td><code>.se-sidenav__badge</code></td><td><code>--se-color-brand-accent</code>, radio pill</td></tr>
+                <tr><td>Off-canvas (≤768px)</td><td><code>.se-sidenav--offcanvas.is-open</code></td><td><code>--se-elevation-03</code> · <code>--se-duration-slow</code> · overlay 45%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 7: BOTONES Y ACCIONES
+           ==================================================================== -->
+      <section id="componente-botones" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-ui-radios-grid"></i> Sistema de Botones y Jerarquía</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('btn-code-snippet')"><i class="bi bi-clipboard"></i> Copiar Botones</button>
+        </div>
+        <p class="doc-section-desc">
+          Jerarquía de botones según su nivel de prioridad de acción. Todos los botones cuentan con estados hover, focus-visible normado en naranja (#E0701E) y estado deshabilitado accesible.
+        </p>
+
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+              
+              <!-- Primario Institucional -->
+              <button type="button" class="btn-pill" style="background: var(--rojo); color: #fff; padding: 12px 24px; border:none; border-radius:999px; font-weight:500; cursor:pointer;">
+                <i class="bi bi-send-fill" style="margin-right:6px;"></i> Acción Primaria
+              </button>
+
+              <!-- Primario Gob Azul -->
+              <button type="button" class="btn-pill" style="background: var(--gob-azul); color: #fff; padding: 12px 24px; border:none; border-radius:999px; font-weight:500; cursor:pointer;">
+                <i class="bi bi-check-lg" style="margin-right:6px;"></i> Guardar Trámite
+              </button>
+
+              <!-- Secundario / Outline -->
+              <button type="button" class="btn-pill" style="background: transparent; color: var(--azul); border: 2px solid var(--azul); padding: 10px 22px; border-radius:999px; font-weight:500; cursor:pointer;">
+                <i class="bi bi-arrow-left" style="margin-right:6px;"></i> Volver / Cancelar
+              </button>
+
+              <!-- Destructivo / Peligro -->
+              <button type="button" class="btn-pill" style="background: #fee2e2; color: #b91c1c; border: 1px solid #f87171; padding: 11px 20px; border-radius:999px; font-weight:500; cursor:pointer;">
+                <i class="bi bi-trash3-fill" style="margin-right:6px;"></i> Eliminar Requerimiento
+              </button>
+
+              <!-- Deshabilitado -->
+              <button type="button" class="btn-pill" disabled style="background: #e2e8f0; color: #94a3b8; border: none; padding: 12px 24px; border-radius:999px; font-weight:500; cursor:not-allowed;">
+                Acción Deshabilitada
+              </button>
+
+            </div>
+          </div>
+
+          <div class="doc-code-pane" style="display: block;">
+            <pre><code id="btn-code-snippet">&lt;!-- 1. Botón Primario Institucional --&gt;
+&lt;button type="button" class="btn-pill btn-pill--primary"&gt;
+  &lt;i class="bi bi-send-fill" aria-hidden="true"&gt;&lt;/i&gt; Acción Primaria
+&lt;/button&gt;
+
+&lt;!-- 2. Botón Primario de Gobierno Digital --&gt;
+&lt;button type="button" class="btn-pill btn-pill--gob"&gt;
+  &lt;i class="bi bi-check-lg" aria-hidden="true"&gt;&lt;/i&gt; Guardar Trámite
+&lt;/button&gt;
+
+&lt;!-- 3. Botón Secundario / Contorno --&gt;
+&lt;button type="button" class="btn-pill btn-pill--outline"&gt;
+  &lt;i class="bi bi-arrow-left" aria-hidden="true"&gt;&lt;/i&gt; Volver
+&lt;/button&gt;
+
+&lt;!-- 4. Botón de Acción Peligrosa / Destructiva --&gt;
+&lt;button type="button" class="btn-pill btn-pill--danger"&gt;
+  &lt;i class="bi bi-trash3-fill" aria-hidden="true"&gt;&lt;/i&gt; Eliminar Requerimiento
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 8: FORMULARIOS Y VALIDACIÓN RUT
+           ==================================================================== -->
+      <section id="componente-formularios" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-input-cursor-text"></i> Formularios Accesibles y Formateo de RUT</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('form-code-snippet')"><i class="bi bi-clipboard"></i> Copiar Formulario</button>
+        </div>
+        <p class="doc-section-desc">
+          Estructura de controles de formulario con indicadores de obligatoriedad semánticos, texto de ayuda (<code>aria-describedby</code>) y formateador interactivo para RUT chileno (módulo 11).
+        </p>
+
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <form style="max-width: 650px; display: grid; gap: 18px;" onsubmit="event.preventDefault(); alert('Formulario validado correctamente');">
+              
+              <!-- Campo RUT con formateo en vivo -->
+              <div class="login-field">
+                <label for="demoRut" style="display:block; font-weight:500; font-size:0.9rem; margin-bottom:6px;">
+                  RUT del Solicitante o Denunciante <span style="color:var(--rojo); font-weight:700;">(*)</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="demoRut" 
+                  class="login-control" 
+                  placeholder="Ej: 12.345.678-9" 
+                  required 
+                  aria-required="true"
+                  aria-describedby="rutHelp"
+                  oninput="formatRutInput(this)"
+                />
+                <span id="rutHelp" style="font-size: 0.78rem; color: var(--texto-muted); display: block; margin-top: 4px;">
+                  Ingrese su número de cédula con o sin puntos y guión. El formato se aplicará automáticamente.
+                </span>
+              </div>
+
+              <!-- Selector Tipo de Tramitación -->
+              <div class="login-field">
+                <label for="demoTipoTramite" style="display:block; font-weight:500; font-size:0.9rem; margin-bottom:6px;">
+                  Tipo de Requerimiento <span style="color:var(--rojo); font-weight:700;">(*)</span>
+                </label>
+                <select id="demoTipoTramite" class="login-control" required aria-required="true">
+                  <option value="" disabled selected>Seleccione una opción...</option>
+                  <option value="consulta">Consulta sobre normativa educacional</option>
+                  <option value="gcc">Normativa (GCC)</option>
+                  <option value="denuncia">Denuncia por presunto incumplimiento</option>
+                  <option value="expediente">Expediente de expulsión (Establecimientos)</option>
+                </select>
+              </div>
+
+              <!-- Textarea accesible -->
+              <div class="login-field">
+                <label for="demoDetalle" style="display:block; font-weight:500; font-size:0.9rem; margin-bottom:6px;">
+                  Descripción Detallada de los Hechos <span style="color:var(--rojo); font-weight:700;">(*)</span>
+                </label>
+                <textarea id="demoDetalle" class="login-control" rows="4" placeholder="Describa clara y cronológicamente lo sucedido..." required aria-required="true"></textarea>
+              </div>
+
+              <!-- Checkbox de Aceptación -->
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; cursor: pointer;">
+                <input type="checkbox" required aria-required="true">
+                <span>Declaro bajo juramento que los antecedentes suministrados son verídicos.</span>
+              </label>
+
+              <!-- Botón de Envío -->
+              <button type="submit" class="btn-pill" style="background:var(--azul); color:#fff; border:none; padding:12px 24px; border-radius:999px; width:fit-content; cursor:pointer;">
+                <i class="bi bi-file-earmark-check-fill"></i> Continuar con la Solicitud
+              </button>
+
+            </form>
+          </div>
+
+          <div class="doc-code-pane" style="display: block;">
+            <pre><code id="form-code-snippet">&lt;!-- Campo Accesible de RUT Chileno con Formateo --&gt;
+&lt;div class="login-field"&gt;
+  &lt;label for="inputRut"&gt;
+    RUT del Solicitante &lt;span class="required" aria-hidden="true"&gt;(*)&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;input 
+    type="text" 
+    id="inputRut" 
+    class="login-control" 
+    placeholder="12.345.678-9" 
+    required 
+    aria-required="true" 
+    aria-describedby="rutHelpText"
+    oninput="formatRutInput(this)"
+  /&gt;
+  &lt;span id="rutHelpText" class="form-text"&gt;Ingrese sin puntos ni guión; se formateará automáticamente.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Función JS para formateo automático de RUT (TI) --&gt;
+&lt;script&gt;
+function formatRutInput(input) {
+  let val = input.value.replace(/[^0-9kK]/g, '').toUpperCase();
+  if (val.length &gt; 1) {
+    const cuerpo = val.slice(0, -1);
+    const dv = val.slice(-1);
+    const puntos = cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    input.value = `${puntos}-${dv}`;
+  } else {
+    input.value = val;
+  }
+}
+&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 9: TARJETAS (CARDS) DE SERVICIOS
+           ==================================================================== -->
+      <section id="componente-cards" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-card-heading"></i> Tarjetas de Trámites y Servicios (Cards)</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('card-code-snippet')"><i class="bi bi-clipboard"></i> Copiar Tarjeta</button>
+        </div>
+        <p class="doc-section-desc">
+          Módulos de acceso visual que presentan de forma rápida cada facultad y servicio de la institución a los ciudadanos y comunidades educativas.
+        </p>
+
+        <div class="doc-component-card">
+          <div class="doc-preview-pane grey-bg">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+              
+              <!-- Card 1: Denuncias -->
+              <div style="background:#fff; border:1px solid var(--borde); border-radius:10px; padding:24px; box-shadow:0 4px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="width:48px; height:48px; border-radius:50%; background:#fee2e2; color:var(--rojo); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:16px;">
+                    <i class="bi bi-shield-exclamation"></i>
+                  </div>
+                  <h3 style="font-size:1.2rem; color:var(--azul); margin-top:0; margin-bottom:10px;">Ingreso de Denuncias</h3>
+                  <p style="font-size:0.9rem; color:var(--texto-claro); line-height:1.5; margin-bottom:18px;">
+                    Presente antecedentes sobre hechos que vulneren la normativa educacional en su comunidad escolar.
+                  </p>
+                </div>
+                <a href="pages/denuncia.html" class="btn-pill" style="background:var(--azul); color:#fff; text-decoration:none; padding:10px 18px; border-radius:999px; text-align:center; font-size:0.88rem; font-weight:500;">
+                  Iniciar Denuncia <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+
+              <!-- Card 2: GCC -->
+              <div style="background:#fff; border:1px solid var(--borde); border-radius:10px; padding:24px; box-shadow:0 4px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="width:48px; height:48px; border-radius:50%; background:#e0f2fe; color:var(--doc-primary); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:16px;">
+                    <i class="bi bi-people-fill"></i>
+                  </div>
+                  <h3 style="font-size:1.2rem; color:var(--azul); margin-top:0; margin-bottom:10px;">Gestión Colaborativa (GCC)</h3>
+                  <p style="font-size:0.9rem; color:var(--texto-claro); line-height:1.5; margin-bottom:18px;">
+                    Mecanismo voluntario y dialogado para resolver controversias entre miembros de la comunidad escolar.
+                  </p>
+                </div>
+                <a href="pages/gcc.html" class="btn-pill" style="background:var(--gob-azul); color:#fff; text-decoration:none; padding:10px 18px; border-radius:999px; text-align:center; font-size:0.88rem; font-weight:500;">
+                  Solicitar Mediación <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+
+              <!-- Card 3: Seguimiento -->
+              <div style="background:#fff; border:1px solid var(--borde); border-radius:10px; padding:24px; box-shadow:0 4px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="width:48px; height:48px; border-radius:50%; background:#dcfce7; color:#15803d; display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:16px;">
+                    <i class="bi bi-search"></i>
+                  </div>
+                  <h3 style="font-size:1.2rem; color:var(--azul); margin-top:0; margin-bottom:10px;">Seguimiento en Línea</h3>
+                  <p style="font-size:0.9rem; color:var(--texto-claro); line-height:1.5; margin-bottom:18px;">
+                    Revise el estado y avance de sus solicitudes mediante su código de ingreso o RUT autenticado.
+                  </p>
+                </div>
+                <a href="pages/seguimiento.html" class="btn-pill" style="background:#15803d; color:#fff; text-decoration:none; padding:10px 18px; border-radius:999px; text-align:center; font-size:0.88rem; font-weight:500;">
+                  Consultar Estado <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="doc-code-pane" style="display: block;">
+            <pre><code id="card-code-snippet">&lt;!-- Estructura Semántica de Tarjeta de Trámite --&gt;
+&lt;article class="service-card"&gt;
+  &lt;div class="service-card-icon" aria-hidden="true"&gt;
+    &lt;i class="bi bi-shield-exclamation"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h3 class="service-card-title"&gt;Ingreso de Denuncias&lt;/h3&gt;
+  &lt;p class="service-card-desc"&gt;
+    Presente antecedentes sobre hechos que vulneren la normativa educacional en su comunidad escolar.
+  &lt;/p&gt;
+  &lt;a href="pages/denuncia.html" class="btn-pill btn-pill--primary"&gt;
+    Iniciar Denuncia &lt;i class="bi bi-arrow-right" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;/a&gt;
+&lt;/article&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 10: ALERTAS, CALLOUTS Y FEEDBACK
+           ==================================================================== -->
+      <section id="componente-alertas" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-exclamation-triangle"></i> Alertas, Callouts y Mensajes del Sistema</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('alert-code-snippet')"><i class="bi bi-clipboard"></i> Copiar Alertas</button>
+        </div>
+        <p class="doc-section-desc">
+          Bloques informativos con código de color accesible y roles WAI-ARIA <code>role="alert"</code> o <code>role="region"</code>.
+        </p>
+
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              
+              <!-- Alerta Recuerde (Institucional Supereduc) -->
+              <div class="hero-recuerda">
+                <i class="bi bi-lightbulb-fill" style="margin-right: 8px; color: #b45309;"></i>
+                <strong>Recuerde:</strong> Los establecimientos educacionales deben contar con procedimientos internos para la atención de consultas y reclamos de las comunidades educativas, resguardando el interés superior de las y los estudiantes.
+              </div>
+
+              <!-- Alerta Informativa Azul -->
+              <div style="background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid var(--gob-azul); padding:14px 18px; border-radius:4px; font-size:0.9rem; color:#1e3a8a;">
+                <i class="bi bi-info-circle-fill" style="margin-right:8px; color:var(--gob-azul);"></i>
+                <strong>Información importante:</strong> Los plazos administrativos corren a partir del primer día hábil siguiente al ingreso de su solicitud formal.
+              </div>
+
+              <!-- Alerta Éxito Verde -->
+              <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #16a34a; padding:14px 18px; border-radius:4px; font-size:0.9rem; color:#166534;">
+                <i class="bi bi-check-circle-fill" style="margin-right:8px; color:#16a34a;"></i>
+                <strong>Trámite recibido:</strong> Su denuncia ha sido ingresada satisfactoriamente con el folio único <strong>SE-2026-9812</strong>.
+              </div>
+
+              <!-- Alerta Error / Advertencia Roja -->
+              <div style="background:#fef2f2; border:1px solid #fecaca; border-left:4px solid var(--rojo-vivo); padding:14px 18px; border-radius:4px; font-size:0.9rem; color:#991b1b;">
+                <i class="bi bi-exclamation-octagon-fill" style="margin-right:8px; color:var(--rojo-vivo);"></i>
+                <strong>Atención:</strong> Ha superado el número de intentos permitidos. Por motivos de seguridad su acceso permanecerá bloqueado por 15 minutos.
+              </div>
+
+            </div>
+          </div>
+
+          <div class="doc-code-pane" style="display: block;">
+            <pre><code id="alert-code-snippet">&lt;!-- Alerta Informativa Accesible --&gt;
+&lt;div class="alert alert-info" role="region" aria-label="Aviso informativo"&gt;
+  &lt;i class="bi bi-info-circle-fill" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;strong&gt;Información:&lt;/strong&gt; Los plazos administrativos corren a partir del primer día hábil siguiente.
+&lt;/div&gt;
+
+&lt;!-- Alerta de Éxito / Confirmación --&gt;
+&lt;div class="alert alert-success" role="alert"&gt;
+  &lt;i class="bi bi-check-circle-fill" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;strong&gt;Éxito:&lt;/strong&gt; Folio asignado SE-2026-9812.
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 11: TABLAS Y PAGINACIÓN
+           ==================================================================== -->
+      <section id="componente-tablas" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-table"></i> Tablas de Datos y Paginación Accesible</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('table-code-snippet')"><i class="bi bi-clipboard"></i> Copiar Tabla</button>
+        </div>
+        <p class="doc-section-desc">
+          Tablas para paneles de administración, expedientes o seguimiento ciudadano, cumpliendo con <code>&lt;caption&gt;</code> descriptivo y encabezados de columna con <code>scope="col"</code>.
+        </p>
+
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+                <caption style="text-align: left; padding-bottom: 10px; font-weight: 700; color: var(--azul);">
+                  Historial de Requerimientos Registrados en el Sistema
+                </caption>
+                <thead>
+                  <tr style="background: #f1f5f9; border-bottom: 2px solid var(--borde);">
+                    <th scope="col" style="padding: 12px 14px;">Folio</th>
+                    <th scope="col" style="padding: 12px 14px;">Fecha Ingreso</th>
+                    <th scope="col" style="padding: 12px 14px;">Materia</th>
+                    <th scope="col" style="padding: 12px 14px;">Estado</th>
+                    <th scope="col" style="padding: 12px 14px; text-align: right;">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--borde);">
+                    <td style="padding: 12px 14px; font-weight: 700; color: var(--azul);">#SE-2026-0045</td>
+                    <td style="padding: 12px 14px;">02/11/2026</td>
+                    <td style="padding: 12px 14px;">Convivencia Escolar / Mediación</td>
+                    <td style="padding: 12px 14px;">
+                      <span style="background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700;">En Análisis</span>
+                    </td>
+                    <td style="padding: 12px 14px; text-align: right;">
+                      <a href="#" style="color: var(--azul-link); text-decoration: none; font-weight: 500;"><i class="bi bi-eye"></i> Ver Detalle</a>
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--borde);">
+                    <td style="padding: 12px 14px; font-weight: 700; color: var(--azul);">#SE-2026-0012</td>
+                    <td style="padding: 12px 14px;">28/10/2026</td>
+                    <td style="padding: 12px 14px;">Infraestructura y Mobiliario</td>
+                    <td style="padding: 12px 14px;">
+                      <span style="background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700;">Finalizado</span>
+                    </td>
+                    <td style="padding: 12px 14px; text-align: right;">
+                      <a href="#" style="color: var(--azul-link); text-decoration: none; font-weight: 500;"><i class="bi bi-download"></i> Descargar Resolución</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Paginación Accesible -->
+            <nav aria-label="Navegación entre páginas de trámites" style="margin-top: 20px; display: flex; justify-content: center;">
+              <ul style="display: flex; list-style: none; padding: 0; margin: 0; gap: 6px;">
+                <li><button type="button" disabled style="padding: 6px 12px; border: 1px solid var(--borde); background: #f8fafc; color: #94a3b8; border-radius: 4px; cursor: not-allowed;">&laquo; Anterior</button></li>
+                <li><button type="button" style="padding: 6px 12px; border: 1px solid var(--azul); background: var(--azul); color: #fff; border-radius: 4px; font-weight: 700;" aria-current="page">1</button></li>
+                <li><button type="button" style="padding: 6px 12px; border: 1px solid var(--borde); background: #fff; color: var(--texto); border-radius: 4px; cursor: pointer;">2</button></li>
+                <li><button type="button" style="padding: 6px 12px; border: 1px solid var(--borde); background: #fff; color: var(--texto); border-radius: 4px; cursor: pointer;">3</button></li>
+                <li><button type="button" style="padding: 6px 12px; border: 1px solid var(--borde); background: #fff; color: var(--texto); border-radius: 4px; cursor: pointer;">Siguiente &raquo;</button></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="doc-code-pane" style="display: block;">
+            <pre><code id="table-code-snippet">&lt;table class="data-table"&gt;
+  &lt;caption&gt;Historial de Requerimientos Registrados&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Folio&lt;/th&gt;
+      &lt;th scope="col"&gt;Fecha&lt;/th&gt;
+      &lt;th scope="col"&gt;Estado&lt;/th&gt;
+      &lt;th scope="col" class="text-right"&gt;Acción&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;#SE-2026-0045&lt;/td&gt;
+      &lt;td&gt;02/11/2026&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-warning"&gt;En Análisis&lt;/span&gt;&lt;/td&gt;
+      &lt;td class="text-right"&gt;&lt;a href="#"&gt;Ver&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 5.6: MODALES Y DIÁLOGOS
+           ==================================================================== -->
+      <section id="componente-modales" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-window-stack"></i> Modales y Diálogos</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('modal-code')"><i class="bi bi-clipboard"></i> Copiar Modal</button>
+        </div>
+        <p class="doc-section-desc">Para confirmaciones o información que interrumpe el flujo. Usar <code>role="dialog"</code>, <code>aria-modal="true"</code>, foco inicial en el diálogo, cierre con <kbd>Esc</kbd>, clic en el fondo y retorno de foco al disparador.</p>
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <button type="button" class="se-btn se-btn--primary" id="demoModalOpen" aria-haspopup="dialog">Abrir diálogo de confirmación</button>
+            <button type="button" class="se-btn se-btn--secondary" onclick="openDemoCuModal()">Abrir modal ClaveÚnica</button>
+          </div>
+          <div class="doc-code-pane" style="display:block">
+            <pre><code id="modal-code">&lt;div class="se-modal-backdrop" id="confirmModal"&gt;
+  &lt;div class="se-modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" tabindex="-1"&gt;
+    &lt;div class="se-modal__head"&gt;
+      &lt;h2 class="se-modal__title" id="confirmTitle"&gt;Confirmar envío&lt;/h2&gt;
+      &lt;button type="button" class="se-btn se-btn--icon se-btn--sm" data-close aria-label="Cerrar"&gt;&lt;i class="bi bi-x-lg"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="se-modal__body"&gt;¿Desea enviar la información a Supereduc?&lt;/div&gt;
+    &lt;div class="se-modal__foot"&gt;
+      &lt;button type="button" class="se-btn se-btn--secondary" data-close&gt;Cancelar&lt;/button&gt;
+      &lt;button type="button" class="se-btn se-btn--primary"&gt;Enviar&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <div class="se-modal-backdrop" id="demoModal">
+        <div class="se-modal" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle" tabindex="-1">
+          <div class="se-modal__head">
+            <h2 class="se-modal__title" id="demoModalTitle">Confirmar envío</h2>
+            <button type="button" class="se-btn se-btn--icon se-btn--sm" data-close aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+          </div>
+          <div class="se-modal__body">¿Desea enviar la información a Supereduc | Superintendencia de Educación? Podrá revisar el estado en su bandeja.</div>
+          <div class="se-modal__foot">
+            <button type="button" class="se-btn se-btn--secondary" data-close>Cancelar</button>
+            <button type="button" class="se-btn se-btn--primary" data-close onclick="showDocToast('Acción confirmada (demo)')">Enviar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECCIÓN 5.7: PESTAÑAS Y ACORDEONES
+           ==================================================================== -->
+      <section id="componente-tabs" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-segmented-nav"></i> Pestañas y Acordeones</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('tabs-code')"><i class="bi bi-clipboard"></i> Copiar</button>
+        </div>
+        <p class="doc-section-desc">Pestañas: contenido paralelo del mismo nivel (navegación con flechas ← →). Acordeón: preguntas frecuentes y contenido extenso progresivo.</p>
+        <div class="doc-component-card">
+          <div class="doc-preview-pane">
+            <div class="doc-grid-2">
+              <div class="se-tabs" data-tabs>
+                <div class="se-tabs__list" role="tablist" aria-label="Información institucional">
+                  <button class="se-tabs__tab" role="tab" id="tab-a" aria-selected="true" aria-controls="panel-a">Misión</button>
+                  <button class="se-tabs__tab" role="tab" id="tab-b" aria-selected="false" aria-controls="panel-b" tabindex="-1">Visión</button>
+                  <button class="se-tabs__tab" role="tab" id="tab-c" aria-selected="false" aria-controls="panel-c" tabindex="-1">Competencias</button>
+                </div>
+                <div class="se-tabs__panel" role="tabpanel" id="panel-a" aria-labelledby="tab-a">Fiscalizar el cumplimiento de la normativa educacional y resguardar los derechos de las comunidades educativas.</div>
+                <div class="se-tabs__panel" role="tabpanel" id="panel-b" aria-labelledby="tab-b" hidden>Ser una institución reconocida por contribuir a una educación de calidad.</div>
+                <div class="se-tabs__panel" role="tabpanel" id="panel-c" aria-labelledby="tab-c" hidden>Fiscalización, atención de denuncias, rendición de cuentas y procesos sancionatorios.</div>
+              </div>
+              <div class="se-accordion" data-accordion>
+                <div class="se-accordion__item">
+                  <button class="se-accordion__btn" aria-expanded="true" aria-controls="acc-1">¿Qué es Supereduc? <i class="bi bi-chevron-down"></i></button>
+                  <div class="se-accordion__panel" id="acc-1">La Superintendencia de Educación es el organismo que fiscaliza el cumplimiento de la normativa educacional.</div>
+                </div>
+                <div class="se-accordion__item">
+                  <button class="se-accordion__btn" aria-expanded="false" aria-controls="acc-2">¿Cómo ingreso una consulta? <i class="bi bi-chevron-down"></i></button>
+                  <div class="se-accordion__panel" id="acc-2" hidden>A través de los canales oficiales publicados en supereduc.cl.</div>
+                </div>
+                <div class="se-accordion__item">
+                  <button class="se-accordion__btn" aria-expanded="false" aria-controls="acc-3">¿Necesito ClaveÚnica? <i class="bi bi-chevron-down"></i></button>
+                  <div class="se-accordion__panel" id="acc-3" hidden>Para trámites en línea que requieran identificación, sí.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="doc-code-pane" style="display:block">
+            <pre><code id="tabs-code">&lt;!-- Pestañas --&gt;
+&lt;div class="se-tabs" data-tabs&gt;
+  &lt;div class="se-tabs__list" role="tablist" aria-label="Información"&gt;
+    &lt;button class="se-tabs__tab" role="tab" id="tab-a" aria-selected="true" aria-controls="panel-a"&gt;Misión&lt;/button&gt;
+    &lt;button class="se-tabs__tab" role="tab" id="tab-b" aria-selected="false" aria-controls="panel-b" tabindex="-1"&gt;Visión&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="se-tabs__panel" role="tabpanel" id="panel-a" aria-labelledby="tab-a"&gt;...&lt;/div&gt;
+  &lt;div class="se-tabs__panel" role="tabpanel" id="panel-b" aria-labelledby="tab-b" hidden&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Acordeón --&gt;
+&lt;div class="se-accordion"&gt;
+  &lt;div class="se-accordion__item"&gt;
+    &lt;button class="se-accordion__btn" aria-expanded="false" aria-controls="acc-1"&gt;
+      Pregunta &lt;i class="bi bi-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;div class="se-accordion__panel" id="acc-1" hidden&gt;Respuesta&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 12: PLANTILLA BOILERPLATE HTML5 BASE
+           ==================================================================== -->
+      <section id="plantilla-base" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-file-earmark-code"></i> Plantilla HTML5 Base para Nuevos Sitios TI</h2>
+          <button class="doc-btn-copy" onclick="copyComponentCode('boilerplate-code-snippet')"><i class="bi bi-clipboard"></i> Copiar Plantilla Completa</button>
+        </div>
+        <p class="doc-section-desc">
+          Esta plantilla limpia contiene todas las cabeceras requeridas, vinculación a las hojas de estilo institucionales y la inyección automática o modular del Header y Footer. Lista para crear nuevas páginas o herramientas en la Superintendencia de Educación.
+        </p>
+
+        <div class="doc-component-card">
+          <div class="doc-code-pane" style="display: block;">
+            <pre><code id="boilerplate-code-snippet">&lt;!doctype html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Herramienta TI — Supereduc | Superintendencia de Educación&lt;/title&gt;
+
+    &lt;!-- Tipografía Oficial Roboto (Gobierno Digital) --&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet" /&gt;
+    &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" /&gt;
+
+    &lt;!-- Estilos Institucionales --&gt;
+    &lt;link rel="stylesheet" href="css/site.css" /&gt;
+    &lt;link rel="stylesheet" href="css/landing.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;!-- Header Institucional Inyectado dinámicamente o embebido --&gt;
+    &lt;div id="header-container"&gt;&lt;/div&gt;
+
+    &lt;!-- Contenedor Principal Accesible --&gt;
+    &lt;main id="main-content" role="main" style="max-width: var(--max-width); margin: 40px auto; padding: 0 20px; flex: 1;"&gt;
+      &lt;h1 style="color: var(--azul); margin-bottom: 16px;"&gt;Nombre del Módulo o Herramienta&lt;/h1&gt;
+      &lt;p style="color: var(--texto-claro); line-height: 1.6;"&gt;
+        Desarrollado según los lineamientos de https://framework.digital.gob.cl/
+      &lt;/p&gt;
+    &lt;/main&gt;
+
+    &lt;!-- Footer Gubernamental Inyectado --&gt;
+    &lt;div id="footer-container"&gt;&lt;/div&gt;
+
+    &lt;!-- Scripts del Sistema --&gt;
+    &lt;script src="js/components.js"&gt;&lt;/script&gt;
+    &lt;script src="js/main.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECCIÓN 6.2: ARCHIVO TOKENS.CSS
+           ==================================================================== -->
+      <section id="tokens-css" class="doc-section">
+        <div class="doc-section-header">
+          <h2 class="doc-section-title"><i class="bi bi-braces"></i> Archivo de Tokens para TI (<code>css/tokens.css</code>)</h2>
+          <a class="doc-btn-copy" href="css/tokens.css" download style="text-decoration:none"><i class="bi bi-download"></i> Descargar tokens.css</a>
+        </div>
+        <p class="doc-section-desc">Fuente única de verdad del estándar institucional Supereduc: primitivos, tokens semánticos, temas, tipografía, efectos y componentes <code>.se-*</code> con sus estados. Alineado con el Framework de Gobierno Digital, debe incluirse <strong>antes</strong> de cualquier hoja de estilo del proyecto.</p>
+        <div class="doc-component-card">
+          <div class="doc-code-pane" style="display:block">
+            <pre><code>&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap"&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"&gt;
+&lt;link rel="stylesheet" href="css/tokens.css"&gt;   &lt;!-- 1. Tokens + componentes Supereduc --&gt;
+&lt;link rel="stylesheet" href="css/site.css"&gt;     &lt;!-- 2. Estilos base del sitio --&gt;
+&lt;link rel="stylesheet" href="css/proyecto.css"&gt; &lt;!-- 3. Extensiones N4 del proyecto --&gt;
+
+&lt;!-- Tema opcional --&gt;
+&lt;html lang="es" data-theme="light"&gt;  &lt;!-- light | dark | hc --&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ========================================================================
+       MODAL DE DEMOSTRACIÓN DE CLAVEÚNICA
+       ======================================================================== -->
+  <div id="demoCuModal" class="modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(10,22,40,0.6); z-index:99999; align-items:center; justify-content:center; padding:20px;">
+    <div class="modal-card" role="dialog" aria-labelledby="modalCuTitle" aria-modal="true" style="background:#fff; border-radius:10px; max-width:480px; width:100%; padding:28px; position:relative; box-shadow:0 20px 40px rgba(0,0,0,0.25);">
+      <button type="button" class="modal-close" onclick="closeDemoCuModal()" aria-label="Cerrar ventana" style="position:absolute; right:16px; top:16px; background:none; border:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+      
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <span class="cl-claveunica" style="display:inline-block; width:34px; height:34px; background:#0b457f; border-radius:6px; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem;">CU</span>
+        <h2 id="modalCuTitle" style="font-size: 1.4rem; color: #0b457f; margin: 0;">Autenticación ClaveÚnica</h2>
+      </div>
+
+      <p style="font-size: 0.95rem; color: var(--texto-claro); line-height: 1.5; margin-bottom: 20px;">
+        Este componente modal cumple con el estándar de identidad digital del Gobierno de Chile (OIDC). Permite canalizar la autorización oficial del Estado hacia los servicios de la Superintendencia de Educación.
+      </p>
+
+      <div style="background: #f1f5f9; padding: 14px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 20px;">
+        <strong>Parámetros OIDC Oficiales:</strong><br>
+        <code>client_id: supereduc-prod</code><br>
+        <code>scope: openid run name email</code><br>
+        <code>redirect_uri: /auth/callback</code>
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: flex-end;">
+        <button type="button" class="btn-pill" style="background:#e2e8f0; border:none; padding:10px 18px; border-radius:999px; cursor:pointer;" onclick="closeDemoCuModal()">Cerrar</button>
+        <button type="button" class="btn-pill" style="background:#0b457f; color:#fff; border:none; padding:10px 18px; border-radius:999px; cursor:pointer;" onclick="alert('Redirigiendo a accounts.claveunica.gob.cl...'); closeDemoCuModal();">
+          Continuar a ClaveÚnica &raquo;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST DE NOTIFICACIÓN DE COPIADO -->
+  <div id="docToast" class="doc-toast" role="status" aria-live="polite">
+    <i class="bi bi-check-circle-fill"></i>
+    <span id="docToastText">¡Código copiado al portapapeles!</span>
+  </div>
+
+  <!-- ========================================================================
+       SCRIPTS INTERACTIVOS DE LA GUÍA DE COMPONENTES TI
+       ======================================================================== -->
+  <script>
+    // Conmutador entre pestañas Vista Previa y Código
+    function switchTab(btn, showId, hideId) {
+      const parent = btn.closest('.doc-component-card');
+      parent.querySelectorAll('.doc-btn-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const showEl = document.getElementById(showId);
+      const hideEl = document.getElementById(hideId);
+      if (showEl) showEl.style.display = (showId.includes('code') ? 'block' : '');
+      if (hideEl) hideEl.style.display = 'none';
+    }
+
+    // Copiado al portapapeles de elementos de código
+    function copyComponentCode(elementId) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        showDocToast("¡Código copiado al portapapeles con éxito!");
+      }).catch(err => {
+        console.error("Error al copiar:", err);
+      });
+    }
+
+    // Copiado rápido de textos / colores
+    function copyText(val, successMessage) {
+      navigator.clipboard.writeText(val).then(() => {
+        showDocToast(successMessage || "Copiado valor: " + val);
+      });
+    }
+
+    // Muestra de Toast emergente
+    function showDocToast(msg) {
+      const toast = document.getElementById('docToast');
+      const text = document.getElementById('docToastText');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // Modal Demo ClaveÚnica
+    function openDemoCuModal() {
+      const modal = document.getElementById('demoCuModal');
+      if (modal) modal.style.display = 'flex';
+    }
+    function closeDemoCuModal() {
+      const modal = document.getElementById('demoCuModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    // Formateador de RUT en tiempo real
+    function formatRutInput(input) {
+      let val = input.value.replace(/[^0-9kK]/g, '').toUpperCase();
+      if (val.length > 1) {
+        const cuerpo = val.slice(0, -1);
+        const dv = val.slice(-1);
+        const puntos = cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        input.value = puntos + '-' + dv;
+      } else {
+        input.value = val;
+      }
+    }
+
+    // ===================== NAVEGACIÓN LATERAL DEL DOCUMENTO =====================
+    (function () {
+      const sidebar = document.querySelector('.doc-sidebar');
+      const navLinks = Array.from(document.querySelectorAll('.doc-nav-link'));
+      const search = document.getElementById('docSearchInput');
+      const toggle = document.getElementById('docNavToggle');
+      const empty = document.getElementById('docNavEmpty');
+
+      function setActive(id) {
+        navLinks.forEach(l => {
+          const on = l.getAttribute('href') === '#' + id;
+          l.classList.toggle('active', on);
+          if (on) l.setAttribute('aria-current', 'location'); else l.removeAttribute('aria-current');
+        });
+      }
+
+      // Clic: scroll suave, foco accesible, URL actualizada y cierre en móvil
+      navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          const id = link.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+          history.replaceState(null, '', '#' + id);
+          setActive(id);
+          if (sidebar.classList.contains('is-open')) { sidebar.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
+        });
+      });
+
+      // Scrollspy con IntersectionObserver
+      const sections = navLinks.map(l => document.getElementById(l.getAttribute('href').slice(1))).filter(Boolean);
+      const visible = new Map();
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => visible.set(en.target.id, en.isIntersecting ? en.boundingClientRect.top : null));
+        const first = sections.find(s => visible.get(s.id) !== null && visible.get(s.id) !== undefined);
+        if (first) setActive(first.id);
+      }, { rootMargin: '-90px 0px -55% 0px', threshold: 0 });
+      sections.forEach(s => io.observe(s));
+
+      // Mantener visible el link activo dentro del sidebar
+      const mo = new MutationObserver(() => {
+        const a = document.querySelector('.doc-nav-link.active');
+        if (a && window.innerWidth > 992) a.scrollIntoView({ block: 'nearest' });
+      });
+      navLinks.forEach(l => mo.observe(l, { attributes: true, attributeFilter: ['class'] }));
+
+      // Buscador: filtra ítems, oculta grupos vacíos, Enter navega al primero
+      search.addEventListener('input', () => {
+        const q = search.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+        let total = 0;
+        document.querySelectorAll('.doc-nav-group').forEach(g => {
+          let n = 0;
+          g.querySelectorAll('.doc-nav-item').forEach(it => {
+            const t = it.textContent.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            const show = t.includes(q);
+            it.style.display = show ? '' : 'none';
+            if (show) n++;
+          });
+          g.style.display = n ? '' : 'none';
+          total += n;
+        });
+        empty.style.display = total ? 'none' : 'block';
+        if (q && sidebar) { sidebar.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); }
+      });
+      search.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const first = navLinks.find(l => l.closest('.doc-nav-item').style.display !== 'none');
+          if (first) first.click();
+        }
+      });
+
+      // Toggle móvil
+      toggle.addEventListener('click', () => {
+        const o = sidebar.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', o);
+      });
+
+      // Hash inicial
+      if (location.hash && document.getElementById(location.hash.slice(1))) setActive(location.hash.slice(1));
+    })();
+
+    // ===================== ESCALAS DE COLOR =====================
+    (function () {
+      const S = {
+        scalesSystem: [
+          ['Color Primario', 'Base #0F69C4 · Kit Gob', [['Lighten','#BFEEFF'],['200','#649CFD'],['Base 500','#0F69C4',1],['700','#003B8D'],['Darken 900','#00135A']]],
+          ['Color Accent', 'Base #FF4731', [['Lighten','#FFCFD3'],['200','#F37874'],['Base 500','#FF4731',1],['700','#E4332C'],['Darken 900','#C82018']]],
+          ['Escala de grises', '10 · 20 · 60 · 90', [['10','#E6E6E6'],['20','#CCCCCC'],['Base 60','#666666',1],['90','#1C1C1C'],['Negro','#111111'],['Texto','#373737'],['Blanco','#FFFFFF']]]
+        ],
+        scalesStates: [
+          ['Éxito', 'texto: usar Darken', [['Lighten','#C8E6C9'],['Base','#4CAF50',1],['Darken','#1B5E20']]],
+          ['Info', '', [['Lighten','#BBDEFB'],['Base','#2196F3',1],['Darken','#0D47A1']]],
+          ['Advertencia', '', [['Lighten','#FFCCBC'],['Base','#FF5722',1],['Darken','#BF360C']]],
+          ['Error', 'no confundir con rojo marca', [['Lighten','#FFCDD2'],['Base','#FB3B3B',1],['Darken','#BE0A1F']]],
+          ['Focus y Link', 'focus · contraste · link · visitado', [['Focus','#FFBE5C',1],['Contraste','#373737'],['Link','#1D70B8'],['Visitado','#4C2C92']]]
+        ],
+        scalesBrand: [
+          ['Paleta institucional oficial', 'Usar estos valores HEX exactos', [['Azul oscuro','#25306B',1],['Azul claro','#006BB9'],['Blanco grisáceo','#EDF0F5'],['Rojo','#FF1D3D']]]
+        ]
+      };
+      function lum(hex) {
+        const c = [1,3,5].map(i => parseInt(hex.substr(i,2),16)/255).map(v => v <= .03928 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4));
+        return .2126*c[0] + .7152*c[1] + .0722*c[2];
+      }
+      Object.keys(S).forEach(id => {
+        const host = document.getElementById(id);
+        if (!host) return;
+        S[id].forEach(([title, sub, tones]) => {
+          const t = document.createElement('div');
+          t.className = 'doc-scale-title';
+          t.innerHTML = '<h4>' + title + '</h4><span>' + sub + '</span>';
+          const row = document.createElement('div');
+          row.className = 'doc-scale';
+          tones.forEach(([name, hex, base]) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.style.background = hex;
+            const L = lum(hex);
+            const white = (1.05)/(L+.05), black = (L+.05)/(.05);
+            b.style.color = white >= black ? '#fff' : '#111';
+            if (base) b.classList.add('is-base');
+            b.innerHTML = '<span>' + name + '</span><span>' + hex + '</span><span style="opacity:.8">AA ' + Math.max(white, black).toFixed(1) + ':1</span>';
+            b.setAttribute('aria-label', title + ' ' + name + ' ' + hex + ', copiar');
+            b.addEventListener('click', () => copyText(hex));
+            row.appendChild(b);
+          });
+          host.appendChild(t); host.appendChild(row);
+        });
+      });
+    })();
+
+    // ===================== COMPONENTES DEMO (sidenav, modal, tabs, acordeón) =====================
+    (function () {
+      // Sidenav
+      document.querySelectorAll('.se-sidenav').forEach(nav => {
+        nav.querySelectorAll('.se-sidenav__toggle').forEach(btn => btn.addEventListener('click', () => {
+          btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') !== 'true');
+        }));
+        const col = nav.querySelector('[data-sidenav-collapse]');
+        if (col) col.addEventListener('click', () => {
+          const c = nav.classList.toggle('is-collapsed');
+          col.setAttribute('aria-pressed', c);
+          col.setAttribute('aria-label', c ? 'Expandir menú' : 'Colapsar menú');
+          col.innerHTML = c ? '<i class="bi bi-chevron-double-right"></i>' : '<i class="bi bi-chevron-double-left"></i>';
+        });
+        nav.querySelectorAll('a.se-sidenav__link:not([aria-disabled])').forEach(a => a.addEventListener('click', e => {
+          e.preventDefault();
+          nav.querySelectorAll('[aria-current="page"]').forEach(x => x.removeAttribute('aria-current'));
+          a.setAttribute('aria-current', 'page');
+        }));
+      });
+
+      // Modal
+      const modal = document.getElementById('demoModal');
+      const opener = document.getElementById('demoModalOpen');
+      function closeM() { modal.classList.remove('is-open'); opener.focus(); }
+      if (modal && opener) {
+        opener.addEventListener('click', () => { modal.classList.add('is-open'); modal.querySelector('.se-modal').focus(); });
+        modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-close]')) closeM(); });
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape') {
+            if (modal.classList.contains('is-open')) closeM();
+            closeDemoCuModal();
+          }
+        });
+      }
+
+      // Tabs (con flechas)
+      document.querySelectorAll('[data-tabs]').forEach(w => {
+        const tabs = Array.from(w.querySelectorAll('[role="tab"]'));
+        function sel(t) {
+          tabs.forEach(x => {
+            const on = x === t;
+            x.setAttribute('aria-selected', on);
+            x.tabIndex = on ? 0 : -1;
+            document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+          });
+          t.focus();
+        }
+        tabs.forEach((t, i) => {
+          t.addEventListener('click', () => sel(t));
+          t.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') sel(tabs[(i + 1) % tabs.length]);
+            if (e.key === 'ArrowLeft') sel(tabs[(i - 1 + tabs.length) % tabs.length]);
+          });
+        });
+      });
+
+      // Acordeón
+      document.querySelectorAll('.se-accordion__btn').forEach(b => b.addEventListener('click', () => {
+        const o = b.getAttribute('aria-expanded') !== 'true';
+        b.setAttribute('aria-expanded', o);
+        document.getElementById(b.getAttribute('aria-controls')).hidden = !o;
+      }));
+    })();
+  </script>
+</body>
+</html>
